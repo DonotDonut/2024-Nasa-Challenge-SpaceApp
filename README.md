@@ -13,6 +13,6 @@ NASA Seattle Space App Challenge 2024
     * Open Visual Studio Code and navigate to the **Source Control** tab.
     * Select **Clone Repository** and enter the GitHub URL for the repository.
 6) **Select a Folder for GitHub Code:** Choose the folder where you want to store the cloned GitHub repository.
-7) **Open the Folder in Visual Studio Code:** In Visual Studio Code, go to File -> Open Folder, and select the folder where the GitHub code was saved.
+7) **Open the Folder in Visual Studio Code:** In Visual Studio Code, go to **File → Open Folder**, and select the folder where the GitHub code was saved.
 8) **Run the Code:** Open the terminal in Visual Studio Code and type <streamlit run .\app.py> to execute the code.
 
