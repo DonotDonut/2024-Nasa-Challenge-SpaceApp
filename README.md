@@ -30,4 +30,14 @@ NASA Seattle Space App Challenge 2024
     * to install astroquery type `pip install streamlit`
 9) **Run the Code:** Open the terminal in Visual Studio Code and type `streamlit run .\app.py` to execute the code.
 
+# Jupyter notebook way: 
+- anaconda> Jupyter notebook> go to your directory for space apps
+- open the python file (with .py) or both if you want
+- open the terminal while in the directory in jupyter notebook. 
+- pip install the required packages those arent in anaconda though terminal
+- once the code is good try running the app/code
+
+- also .ipynb is a better way to check every steps of coding. Highly recommend to use jupyter notebook
+
+
 
