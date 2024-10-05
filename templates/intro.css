@@ -1,12 +1,14 @@
-#play_Button_Container {
+#play_Button {
     background-color: aqua;
+    align-items: center;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    position: center;
     font-size: 16px;
 }
 
 #intro_Video_Container {
     background-color: green;
+    padding: 10px 20px;
+    border-radius: 5px;
 }
