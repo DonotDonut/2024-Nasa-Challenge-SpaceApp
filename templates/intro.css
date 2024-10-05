@@ -5,11 +5,12 @@
     border: none;
     border-radius: 5px;
     font-size: 16px;
-    size: 30%;
+    size: 50%;
 }
 
 #intro_Video {
     background-color: green;
     padding: 10px 20px;
     border-radius: 5px;
+    align-items: center;
 }
