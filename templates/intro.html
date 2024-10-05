@@ -20,6 +20,7 @@
                 <a href="contact.html"> Contact </a>
             </div>
         </div>
+
     </header>
     <main class="main">
     
@@ -41,10 +42,33 @@
             <div>
                 <center> <button id="play_Button" onclick="alert('Button clicked!')">Play</button> </center>
             </div>
+
         </div>
 
-    </body>
-</html>
+    <script>
+        function toggleContent() {
+          // Get the two content sections by their IDs
+          var content1 = document.getElementById('content1');
+          var content2 = document.getElementById('content2');
+          
+          // Toggle between the two content sections
+          if (content1.classList.contains('active')) {
+            content1.classList.remove('active');
+            content2.classList.add('active');
+          } else {
+            content2.classList.remove('active');
+            content1.classList.add('active');
+          }
+        }
+      </script>
+
+
+
+
+
+
+</body>
+
 
 <footer class="footer"> 
     <p class="footer_Content"> Team Exo-Explore subitted this to the 2024 NASA Challenge Space App </p>
