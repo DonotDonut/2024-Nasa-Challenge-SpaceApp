@@ -15,6 +15,7 @@ a:active {text-decoration: none; color:black;}
     height: auto;
     top: 25%;
 
+    display: flex;
     font-size:100%;
     justify-content: space-evenly;
 }
