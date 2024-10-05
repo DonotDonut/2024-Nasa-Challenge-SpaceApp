@@ -8,15 +8,15 @@ flask run
 2) 'python Flash.py' in the terminal 
 """
 
-from app import Flask, render_template 
+from flask import Flask
 
 app = Flask(__name__)
 
 # Route for the home page 
 @app.rounter('/')
-def home(): 
-    return render_template('intro.html') #for specific html class 
-
+def intro(): 
+    #return render_template('intro.html') #for specific html class 
+    return 'he'
 """
 # Route for the spaceship 
 @app.rounter('/')
