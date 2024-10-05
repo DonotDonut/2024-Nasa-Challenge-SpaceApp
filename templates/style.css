@@ -29,12 +29,28 @@ a:active {text-decoration: none; color:black;}
     background-color: blue;
     width: 100%;
     height: 70%;
+    display: flex;
+    justify-content: center;
 }
 
 #intro_Content {
     background-color: gray;
     width: 100%;
     height: 100%;
+}
+
+#contact_Content {
+    background-color: gray;
+    width: 50%;
+    height: 100%;
+    text-align: center;
+}
+
+#about_Content {
+    background-color: gray;
+    width: 50%;
+    height: 100%;
+    text-align: center;
 }
 
 #intro_Video {
