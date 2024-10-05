@@ -1,0 +1,36 @@
+
+/*Link Behaviors*/
+a:link {text-decoration: none; color:black;}
+a:visited {text-decoration: none; color:black;}
+a:hover {text-decoration: none; color:black;}
+a:active {text-decoration: none; color:black;}
+
+
+/*Header*/
+.navigation_Bar{
+    padding: 1%;
+    border-top: 1px solid black;
+    margin: 0%;
+
+    width: 30%;
+    height: auto;
+    top: 25%;
+
+    display: flex;
+    font-size:100%;
+    justify-content: space-evenly;
+}
+
+
+/*Header*/
+#about_Content {
+    background-color: gray;
+}
+
+
+
+/*Footer*/
+.footer_Content {
+    justify-content: center;
+}
+
