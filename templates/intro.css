@@ -22,12 +22,16 @@ a:active {text-decoration: none; color:black;}
 }
 
 
-/*Header*/
+/*Body: Main*/
 #intro_Content {
     background-color: gray;
 }
 
-
+#intro_Video {
+    background-color: green;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
 
 #play_Button {
     background-color: aqua;
@@ -39,11 +43,6 @@ a:active {text-decoration: none; color:black;}
     size: 50%;
 }
 
-#intro_Video {
-    background-color: green;
-    padding: 10px 20px;
-    border-radius: 5px;
-}
 
 /*Footer*/
 .footer_Content {
