@@ -1,47 +1,53 @@
 import streamlit as st
-import pandas as pd
 import openai
 import os
 
+# Load OpenAI API key
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
-def load_data(file):
-    if file is not None:
-        data = pd.read_csv(file)
-        return data
-    return None
+# Session state to store chat history
+if 'messages' not in st.session_state:
+    st.session_state.messages = []
 
-def main():
-    st.title("Custom GPT Chatbot")
+# Function to generate a response from OpenAI
+def generate_response(user_input):
+    # Construct the prompt
+    messages = [
+        {"role": "user", "content": user_input}
+    ]
 
-    uploaded_file = st.file_uploader("2024-10-05T19-18_export.csv", type="csv")
-    data = load_data(uploaded_file)
-
-    if data is not None:
-        st.write("Data Loaded:")
-        st.dataframe(data)
-
-    user_input = st.text_input("You:", "")
-    
-    if st.button("Send"):
-        if data is not None:
-            response = generate_response(user_input, data)
-            st.text_area("GPT:", response, height=200)
-
-def generate_response(user_input, data):
-    # Here you can create a custom context based on your data
-    context = "You are a knowledgeable assistant. Here are some facts:"
-    
-    for index, row in data.iterrows():
-        context += f"\n{row['input']} - {row['output']}"
-
-    full_prompt = f"{context}\nUser: {user_input}\nAssistant:"
-    
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
-        messages=[{"role": "user", "content": full_prompt}]
+        messages=messages
     )
     
     return response['choices'][0]['message']['content']
+
+def main():
+    st.title("Simple Chatbot")
+
+    # Chat container
+    st.markdown('<div style="position: fixed; bottom: 20px; right: 20px; width: 300px; background-color: #ffffff; border: 1px solid #ccc; border-radius: 5px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); padding: 10px; z-index: 1000;">', unsafe_allow_html=True)
+
+    # Display chat history
+    for msg in st.session_state.messages:
+        role = msg['role']
+        content = msg['content']
+        st.markdown(f"<strong>{role.capitalize()}:</strong> {content}", unsafe_allow_html=True)
+
+    user_input = st.text_input("You:", "", key="user_input")
+
+    if st.button("Send"):
+        if user_input:
+            # Save user message to session state
+            st.session_state.messages.append({"role": "user", "content": user_input})
+            response = generate_response(user_input)
+            st.session_state.messages.append({"role": "assistant", "content": response})
+
+            # Clear the input field
+            st.experimental_rerun()
+
+    st.markdown('</div>', unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main()
