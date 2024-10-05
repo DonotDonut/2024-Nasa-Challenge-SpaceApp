@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask Website</title>
+    <link href="intro.css", rel="stylesheet"/> 
+
+</head>
+<body>
+    <h1>Welcome to Intro Page</h1>
+    
+    
+    <div id="intro_Content">
+        <!-- Video Section --> 
+        <div >
+            <video id="intro_Video" width="600" height="" controls>
+                <source src="{{ url_for('static', filename='sample-video.mp4') }}" type="video/mp4">
+            </video>
+        </div>
+
+
+        <!-- Button -->
+        <div>
+            <button id="play_Button" onclick="alert('Button clicked!')">Play</button>
+
+        </div>
+    </div>
+
+</body>
+
+<footer> 
+
+</footer>
+
+</html>
