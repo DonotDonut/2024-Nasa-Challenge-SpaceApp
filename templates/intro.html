@@ -5,20 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flask Website</title>
     <link href="intro.css", rel="stylesheet"/> 
+
 </head>
 <body>
-    <h1>Welcome to My Flask Website</h1>
+    <h1>Welcome to Intro Page</h1>
     
-    <!-- Video Section 
-    <video width="600" controls>
-        <source src="{{ url_for('static', filename='sample-video.mp4') }}" type="video/mp4">
-        Your browser does not support the video tag.
-    </video> -->
+    <!-- Video Section --> 
+    <div id="intro_Video_Container">
+        <video width="600" height="" controls>
+            <source src="{{ url_for('static', filename='sample-video.mp4') }}" type="video/mp4">
+        </video>
+    </div>
 
-    <br><br>
-
+    
     <!-- Button -->
-    <button onclick="alert('Button clicked!')">Click Me</button>
+    <div id="play_Button_Container">
+        <button onclick="alert('Button clicked!')">Play</button>
+    </div>
 
 </body>
 </html>
