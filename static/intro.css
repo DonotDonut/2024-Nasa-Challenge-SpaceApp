@@ -1,6 +1,10 @@
-button {
+#button_Container button {
+    background-color: green;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
     position: center;
-    size: 30%;
-    font-size: 30%;
-    
+    font-size: 16px;
 }
