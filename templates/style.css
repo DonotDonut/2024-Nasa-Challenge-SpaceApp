@@ -1,4 +1,4 @@
-
+/* Template for all pages */ 
 /*Link Behaviors*/
 a:link {text-decoration: none; color:white;}
 a:visited {text-decoration: none; color:white;}
@@ -37,23 +37,28 @@ body {
 
 }
 
-#intro_Content {
+/*Footer*/
+.footer {
+    justify-content: center;
+    width: 100%;
+    bottom:0;
+    left:0;
+    position: fixed;
+}
+
+
+
+/* For Intro Page Specifically */
+
+#intro_Content1 {
     width: 100%;
     height: 100%;
 }
 
-#contact_Content {
-    background-color: gray;
-    width: 50%;
+#intro_Content2 {
+    width: 100%;
     height: 100%;
-    text-align: center;
-}
-
-#about_Content {
-    background-color: gray;
-    width: 50%;
-    height: 100%;
-    text-align: center;
+    background-color: yellow;
 }
 
 #intro_Video {
@@ -73,9 +78,36 @@ body {
     size: 50%;
 }
 
-/*Footer*/
-.footer {
-    justify-content: center;
-    width: 100%;
-    height: auto;
+/* Hide content by default */
+.hidden {
+    display: none;
 }
+
+/* Make visible content block display */
+.visible {
+    display: block;
+}
+
+
+
+/* For contact Page Specifically */
+
+#contact_Content {
+    
+    width: 50%;
+    height: 100%;
+    text-align: center;
+}
+
+/* For About Page Specifically */
+
+#about_Content {
+    background-color: gray;
+    width: 50%;
+    height: 100%;
+    text-align: center;
+}
+
+
+
+

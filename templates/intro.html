@@ -25,9 +25,9 @@
             </div>
         </center>
     </header>
-
+S
     <main class="main">
-        <div id="intro_Content">
+        <div id="intro_Content1" class="visible">
             <!-- Video Section --> 
             <div >
                 <center> 
@@ -39,26 +39,16 @@
 
             <!-- Play Button -->
             <div>
-                <center> <button id="play_Button" onclick="alert('Button clicked!')">Play</button> </center>
+                <center> <button id="play_Button" onclick="switchContent()">Play</button> </center>
             </div>
         </div>
 
-        <script>
-            function toggleContent() {
-                // Get the two content sections by their IDs
-                var content1 = document.getElementById('content1');
-                var content2 = document.getElementById('content2');
-                
-                // Toggle between the two content sections
-                if (content1.classList.contains('active')) {
-                    content1.classList.remove('active');
-                    content2.classList.add('active');
-                } else {
-                    content2.classList.remove('active');
-                    content1.classList.add('active');
-                }
-            }
-        </script>
+        <div id="intro_Content2" class="hidden">
+           <p> Testing </p>
+        </div>
+
+       
+        <script src="appeardisapear.js"> </script>  <!-- link to javascript  --> 
     </main>   
 </body>
 
