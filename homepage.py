@@ -1,6 +1,6 @@
 import streamlit as st
 
-import Exoplanet_3D
+import Exoplanet_3D as Exoplanet_3D
 
 # URL 
 #Exoplanet_3D_path = "C:\Users\Tim\Documents\2024 Nasa SpaceApp Challenge\Nasa-Challenge-SpaceApp2024\Exoplanet_3D.py" 
@@ -143,7 +143,10 @@ with tab2:
             st.write("This is the homepage where you can navigate to different views.")
             st.write("Click the button to view the 3D representation of exoplanets.")
         elif st.session_state.current_page == 'exoplanet_3D':
-            Exoplanet_3D.main_content()  # Only calls this when current_page is 'exoplanet_3D'
+            # Open and execute file1.py
+            with open("Exoplanet_3D.py") as f:
+                code = f.read()
+                exec(code)  # Only calls this when current_page is 'exoplanet_3D'
             # WARNING: 
             # odd here ^^ might run into error StreamlitSetPageConfigMustBeFirstCommandError: set_page_config()  
             

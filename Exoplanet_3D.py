@@ -70,11 +70,14 @@ def show_360_view(exoplanet_name, iframe_link):
     st.title(f"{exoplanet_name} - 360° View")
     st.markdown(f'<iframe src="{iframe_link}" width=700 height=700 style="border:0;" allow="fullscreen"></iframe>', unsafe_allow_html=True)
     
-    col1, col2 = st.columns(2)
+    col1, col2, col3 = st.columns(3)
     with col1:
         if st.button("🔙 Go Back"):
             st.session_state.page = 'main'
     with col2:
+        if st.button("Landing View"):
+            st.session_state.page = 'landing'
+    with col3:
         if st.button("🔭 Telescope View"):
             st.session_state.page = 'telescope'
 
@@ -100,17 +103,22 @@ def main_content():
     for i in range(0, 9, 3): # Indexing error so I'm only including 9 (Will fix in the future)
         with cols[0]:  
             if st.button(starNames[i]):
-                st.session_state.page = starNames[i]
+                None
+                #st.session_state.page = starNames[i]
         with cols[1]: 
             if st.button(starNames[i+1]):
-                st.session_state.page = starNames[i+1]
+                if starNames[i+1] == "K2-18":
+                    st.session_state.page = starNames[i+1]
+                else:
+                    None
         with cols[2]: 
             if st.button(starNames[i+2]):
-                st.session_state.page = starNames[i+2]
+                None
+                #st.session_state.page = starNames[i+2]
 
-    # Check for specific button action
-    if st.button("K2-18"):
-        st.session_state.page = 'K2-18'
+    ## Check for specific button action
+    #if st.button("K2-18"):
+    #    st.session_state.page = 'K2-18'
     
 
 
@@ -264,6 +272,27 @@ def show_telescope_view():
                 mime="image/png"
             )
 
+
+# CSS for Styling
+def set_cssLanding():
+    st.markdown("""
+        <style>
+            body {
+                background-color: #f5f5f5;
+            }
+            h1 {
+                text-align: center;
+                color: #333;
+            }
+        </style>
+    """, unsafe_allow_html=True)
+
+# Function to display the 360° view for the exoplanet
+def show_360_LandView(exoplanet_name, iframe_link):
+    st.title(f"{exoplanet_name} - 360° View")
+    st.markdown(f'<iframe src="{iframe_link}" width=700 height=700 style="border:0;" allow="fullscreen"></iframe>', unsafe_allow_html=True)
+
+
 # Main App Logic
 if 'page' not in st.session_state:
     st.session_state.page = 'main'
@@ -294,3 +323,14 @@ elif st.session_state.page == 'KELT-21_b':
 elif st.session_state.page == 'telescope':
     set_css()
     show_telescope_view()
+
+
+
+# Showing Landing View
+elif st.session_state.page == 'landing':
+    set_cssLanding()
+    show_360_view('Tau Ceti E', 'https://skybox.blockadelabs.com/e/7ccd18d63ee7d666a128776f4f36f605')  # Show the 360° view of Tau Ceti E
+
+
+
+
