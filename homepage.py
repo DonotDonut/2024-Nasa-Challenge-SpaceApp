@@ -31,14 +31,6 @@ st.markdown(
             font-size: 100%;  
         }
 
-        .stTabs[role="tablist"] {
-            justify-content: center;        
-        }
-
-        .stTitle {
-            justify-content: center;
-        }
-
         /* Body: Content Sections */
         #intro_Content, #contact_Content, #about_Content {
             width: 50%;
@@ -56,6 +48,7 @@ st.markdown(
             display: inline-block;
         }
 
+        
         /* Footer */
         .footer {
             text-align: center;
@@ -64,6 +57,10 @@ st.markdown(
             padding: 10px;
         }
 
+
+        .stTitle {
+            justify-content: center;
+        }
 
         .stTabs [role="tablist"] {
             display: flex;
@@ -146,7 +143,7 @@ with tab3:
         <div id="contact_Content">
             <br>
             <center>
-                <p>Contact information is currently redacted.</p>
+                <p>Contact information is being worked on.</p>
             </center>
             <br>
         </div>
