@@ -100,7 +100,7 @@ with tab2:
     st.write("This section will allow you to play the video.")
     
     # Video Section
-    st.video("https://yourdomain.com/path/to/sample-video.mp4")  # Replace with the actual URL or local path
+    st.video("Welcome3.mp4")  # Replace with the actual URL or local path
 
     # Play Button (Using Streamlit's button functionality)
     if st.button("Play", key='play_button'):
