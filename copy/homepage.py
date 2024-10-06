@@ -25,7 +25,7 @@ st.markdown(
 
         /* Background and Text background-color: black;*/
         .main {
-            background-image: url('https://t4.ftcdn.net/jpg/02/43/75/73/240_F_243757367_gBpS6R5c8DB7pL5gw9gi9KXlzFfbdZOA.jpg'); 
+            
             color: black;
             
         }
