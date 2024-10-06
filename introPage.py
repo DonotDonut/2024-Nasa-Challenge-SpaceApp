@@ -3,76 +3,57 @@ import streamlit as st
 # Set up the page configuration
 st.set_page_config(page_title="Flask Website", layout="wide")
 
-# Injecting custom CSS styles
+# Injecting combined CSS styles
 st.markdown(
     """
     <style>
     /* Link Behaviors */
-    a:link {text-decoration: none; color: white;}
-    a:visited {text-decoration: none; color: white;}
-    a:hover {text-decoration: none; color: white;}
-    a:active {text-decoration: none; color: white;}
+    a:link, a:visited, a:hover, a:active {
+        text-decoration: none;
+        color: white;
+    }
 
-    /* Header */
+    /* Background and Text background-color: black;*/
+    .main {
+        background-image: url('starsImage.jpg'); /* Ensure this path is correct */
+        color: white;
+        
+    }
+
+    /* Custom Main Section Layout */
     .navigation_Bar {
         padding: 1%;
         border-top: 1px solid white;
-        margin: 0;
         width: 30%;
-        height: auto;
-        top: 25%;
-        display: flex;
-        font-size: 100%;
-        justify-content: centered;
-        align-items: center; 
-    }
-
-    /* Body: Main */
-    body {
-        background-image: url('starsImage.jpg'); /* Use a valid image URL or path */
-        color: white;
-        overflow: hidden;
-    }
-
-    .main {
-        width: 100%;
-        height: 70%;
         display: flex;
         justify-content: center;
-        align-items: center; /* Center vertically */
+        align-items: center;
+        font-size: 100%;
+        
     }
 
+    /* Body: Content Sections */
     #intro_Content, #contact_Content, #about_Content {
         width: 50%;
         height: 100%;
         text-align: center;
+        margin: auto;
     }
 
-    #intro_Video {
-        padding: 10px 20px;
-        border-radius: 5px;
-        position: relative;
-        width: 80%;
-        height: auto; /* Maintain aspect ratio */
-    }
-
+    /* Play Button */
     #play_Button {
-        align-items: center;
         padding: 10px 20px;
         border: none;
         border-radius: 5px;
         font-size: 16px;
-        size: 50%;
+        display: inline-block;
     }
 
     /* Footer */
     .footer {
-        justify-content: center;
-        width: 100%;
-        height: auto;
         text-align: center;
-        margin-top: 20px; /* Space above footer */
-        background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+        margin-top: 20px;
+        background-color: rgba(0, 0, 0, 0.5);
         padding: 10px;
     }
     </style>
@@ -89,31 +70,17 @@ tab1, tab2, tab3 = st.tabs(["About", "Play", "Contact"])
 # About Tab
 with tab1:
     st.markdown("<div id='about_Content'>", unsafe_allow_html=True)
-    st.write("### About")
+    st.header("About")
     st.write("This section will provide information about Exo-Explore.")
     st.markdown("</div>", unsafe_allow_html=True)
 
 # Play Tab
 with tab2:
     st.markdown("<div id='intro_Content'>", unsafe_allow_html=True)
-    st.write("### Play")
+    st.header("Play")
     st.write("This section will allow you to play the video.")
     
     # Video Section
-    st.video("Welcome3.mp4")  # Replace with the actual URL or local path
+    st.video("Welcome3.mp4")
 
-    # Play Button (Using Streamlit's button functionality)
-    if st.button("Play", key='play_button'):
-        st.success("Button clicked!")
-    
-    st.markdown("</div>", unsafe_allow_html=True)
-
-# Contact Tab
-with tab3:
-    st.markdown("<div id='contact_Content'>", unsafe_allow_html=True)
-    st.write("### Contact")
-    st.write("This section will provide contact information.")
-    st.markdown("</div>", unsafe_allow_html=True)
-
-# Footer
-st.markdown('<div class="footer">Team Exo-Explore submitted this website to the 2024 NASA Space App: Exosky Challenge</div>', unsafe_allow_html=True)
+    st.button("Play")
