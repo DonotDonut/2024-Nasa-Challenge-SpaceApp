@@ -1,6 +1,7 @@
 import streamlit as st
+import subprocess
 
-#import Exoplanet_3D as Exoplanet_3D
+
 
 # URL 
 #Exoplanet_3D_path = "C:\Users\Tim\Documents\2024 Nasa SpaceApp Challenge\Nasa-Challenge-SpaceApp2024\Exoplanet_3D.py" 
@@ -133,21 +134,23 @@ with tab2:
     st.video(data)
     st.markdown('</div>', unsafe_allow_html=True)
     
+    # Function to run another Streamlit app
+    def run_other_app():
+        # Define the path to your other Streamlit app
+        exoplanet_app_path = r"C:\Users\Tim\Documents\2024 Nasa SpaceApp Challenge\Nasa-Challenge-SpaceApp2024\Exoplanet_3D.py"
+
+        # Run the other app as a subprocess
+        subprocess.Popen(["streamlit", "run", exoplanet_app_path])
+    
         # Buttons for navigation in the main content area
     if st.button("Play Now!"):
-        st.session_state.current_page = 'exoplanet_3D'  # Set current page to exoplanet_3D
+        #st.session_state.current_page = 'exoplanet_3D'  # Set current page to exoplanet_3D
+    
+        run_other_app()
+        st.success("Exoplanet 3D App is now running!")
         
-          # Display content based on the current page state
-        if st.session_state.current_page == 'home':
-            st.write("This is the homepage where you can navigate to different views.")
-            st.write("Click the button to view the 3D representation of exoplanets.")
-        #elif st.session_state.current_page == 'exoplanet_3D':
-            # Open and execute file1.py
-            #with open("Exoplanet_3D.py") as f:
-             #   code = f.read()
-              #  exec(code)  # Only calls this when current_page is 'exoplanet_3D'
-            # WARNING: 
-            # odd here ^^ might run into error StreamlitSetPageConfigMustBeFirstCommandError: set_page_config()  
+      
+        
             
 
 # Contact Tab
