@@ -83,7 +83,6 @@ tab1, tab2, tab3 = st.tabs(["About", "Play", "Contact"])
 # About Tab
 with tab1:
     st.markdown("<div id='about_Content'>", unsafe_allow_html=True)
-    st.write("This section will provide information about Exo-Explore.")
     
     st.markdown("</div>", unsafe_allow_html=True)
 
