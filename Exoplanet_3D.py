@@ -21,12 +21,13 @@ kelt_url = "https://eyes.nasa.gov/apps/exo/#/planet/KELT-21_b"
 # CSS for Styling Bubbles with Images
 def set_css():
     st.markdown("""
-        <style>
+        <style>            
             .bubble-container {
                 display: flex;
                 justify-content: center;
                 flex-wrap: wrap;
                 margin: 20px auto;
+                color: black;
             }
             .bubble {
                 display: inline-block;
@@ -39,16 +40,28 @@ def set_css():
                 overflow: hidden;
                 cursor: pointer;
                 box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+                color: black;
             }
             .bubble img {
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
                 border-radius: 75px;
+                color: black;
             }
             .bubble:hover {
                 transform: scale(1.1);
             }
+                
+            .main, .stApp {
+                background-color: white;
+                color: black;
+            }
+            
+            .stApp h1, .stApp h2 {
+                color: black;
+            }
+                
         </style>
     """, unsafe_allow_html=True)
 
@@ -65,8 +78,44 @@ def show_360_view(exoplanet_name, iframe_link):
         if st.button("🔭 Telescope View"):
             st.session_state.page = 'telescope'
 
-# Main content with buttons for different exoplanets
+# Choosinh a star
 def main_content():
+    st.title("Stars")
+
+    # Create a bubble container with clickable bubbles
+    cols = st.columns(3)
+    starNames = [
+        "Proxima Centra",
+        "Ross 128",
+        "Wolf 1067",
+        "Kapteyn's Star", 
+        "K2-18", 
+        "Tau Centauri", 
+        "GJ 667C", 
+        "Gliese 832", 
+        "YZ Centauri", 
+        "HD 219134"
+    ]
+
+    for i in range(0, 9, 3): # Indexing error so I'm only including 9 (Will fix in the future)
+        with cols[0]:  
+            if st.button(starNames[i]):
+                st.session_state.page = starNames[i]
+        with cols[1]: 
+            if st.button(starNames[i+1]):
+                st.session_state.page = starNames[i+1]
+        with cols[2]: 
+            if st.button(starNames[i+2]):
+                st.session_state.page = starNames[i+2]
+
+    # Check for specific button action
+    if st.button("K2-18"):
+        st.session_state.page = 'K2-18'
+    
+
+
+# Main content with buttons for different exoplanets
+def exoplanent_content():
     st.title("Explore Exoplanets")
 
     # Create a bubble container with clickable bubbles
@@ -173,17 +222,14 @@ def show_telescope_view():
             # Store the star chart image in session state
             st.session_state.star_chart_image = Image.open(buf)
 
-        # Display the star chart image
-        st.image(st.session_state.star_chart_image, caption="Star Chart", use_column_width=True)
-
         # Step 3: Create a drawing canvas on top of the star chart image
-        st.write("### Draw on the star chart below:")
+        st.write("Draw on the star chart below:")
 
         # Define the canvas where users can draw freely
         canvas_result = st_canvas(
             fill_color="rgba(255, 165, 0, 0.3)",  # Orange fill for objects
             stroke_width=2,
-            stroke_color="white",  # White stroke for drawing
+            stroke_color="red",  # Red stroke for drawing
             background_image=st.session_state.star_chart_image,  # Use the star chart image as the background
             update_streamlit=True,
             height=700,
@@ -204,7 +250,6 @@ def show_telescope_view():
 
             # Merge the two images
             final_image = Image.alpha_composite(st.session_state.star_chart_image.convert("RGBA"), resized_drawn_image.convert("RGBA"))
-            st.image(final_image, caption="Final Star Chart with Drawing", use_column_width=True)
 
             # Step 5: Convert the final image to a downloadable format
             buf = io.BytesIO()
@@ -227,16 +272,25 @@ if st.session_state.page == 'main':
     set_css()
     main_content()
 
+elif st.session_state.page == 'K2-18':
+    set_css()
+    exoplanent_content()
+
+
 # Show the 360° view for each planet based on user choice
 elif st.session_state.page == 'Kepler-808_b':
+    set_css()
     show_360_view('Kepler-808 b', kepler_url)
 
 elif st.session_state.page == 'HATS-74_A_b':
+    set_css()
     show_360_view('HATS-74 A b', hats_url)
 
 elif st.session_state.page == 'KELT-21_b':
+    set_css()
     show_360_view('KELT-21 b', kelt_url)
 
 # Show telescope view when the user clicks the "Telescope View" button
 elif st.session_state.page == 'telescope':
+    set_css()
     show_telescope_view()
