@@ -4,27 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flask Website</title>
-    <link href="intro.css", rel="stylesheet"/> 
-
+    <link href="intro.css", rel="stylesheet"/>
 </head>
 <body>
-    <h1>Welcome to Intro Page</h1>
-    
-    
-    <div id="intro_Content">
-        <!-- Video Section --> 
-        <div >
-            <video id="intro_Video" width="600" height="" controls>
-                <source src="{{ url_for('static', filename='sample-video.mp4') }}" type="video/mp4">
-            </video>
+    <header>
+        <!-- Navigation bar -->
+        <div class="navigation_Bar">
+            <div style="width: auto;">
+                <a href="about.html"> About </a>
+            </div>
+            <div style="width: auto;">
+                <a href="intro.html"> Play </a>
+            </div>
+            <div style="width: auto;">
+                <a href="contact.html"> Contact </a>
+            </div>
         </div>
 
+    </header>
+    <main class="main">
+    
+        <h1>Welcome to Intro Page</h1>
+        
+        
+        <div id="intro_Content">
+            <!-- Video Section --> 
+            <div >
+                <center> 
+                    <video id="intro_Video" width="600" height="" controls>
+                        <source src="{{ url_for('static', filename='sample-video.mp4') }}" type="video/mp4">
+                    </video> 
+                </center>
+            </div>
 
-        <!-- Button -->
-        <div>
-            <button id="play_Button" onclick="alert('Button clicked!')">Play</button>
+
+            <!-- Button -->
+            <div>
+                <center> <button id="play_Button" onclick="alert('Button clicked!')">Play</button> </center>
+            </div>
+
         </div>
-    </div>
 
     <script>
         function toggleContent() {
@@ -50,8 +69,9 @@
 
 </body>
 
-<footer> 
 
+<footer class="footer"> 
+    <p class="footer_Content"> Team Exo-Explore subitted this to the 2024 NASA Challenge Space App </p>
 </footer>
 
 </html>
