@@ -98,3 +98,6 @@ with tab2:
 
     # Button Section
     st.button("Play")
+
+with tab3:
+    st.markdown("<div id='contact_Content'>", unsafe_allow_html=True)
