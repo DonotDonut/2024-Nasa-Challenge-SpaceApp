@@ -83,16 +83,32 @@ tab1, tab2, tab3 = st.tabs(["About", "Play", "Contact"])
 # About Tab
 with tab1:
     st.markdown("<div id='about_Content'>", unsafe_allow_html=True)
-    #st.header("About")
     st.write("This section will provide information about Exo-Explore.")
+    
     st.markdown("</div>", unsafe_allow_html=True)
+
+    # About Contact Section
+    st.markdown(
+        """
+        <div id="about_contact">
+            <br>
+            <center>
+                <p>Team Exo-Explore submitted this website to the 2024 NASA Space App: Exosky Challenge.</p>
+                <p>At <b>Stellar Explorers</b>, we invite you to embark on a cosmic adventure like no other.</p>
+                <p>Guided by <b>Stella</b>, your mission is to explore distant exoplanets and uncover the mysteries of the stars.</p>
+                <p>As an astronaut chosen for this extraordinary task, you’ll navigate through a holographic star map, selecting from ten neighboring stars, each with the potential to host new worlds.</p>
+                <p>Your exploration is vital to humanity's future, as you help identify planets that could one day sustain life.</p>
+                <p>Begin your journey, and let's chart the unknown together!</p>
+            </center>
+            <br>
+        </div>
+        """, unsafe_allow_html=True
+    )
 
 # Play Tab
 with tab2:
     # Intro section
     st.markdown("<div id='intro_Content'>", unsafe_allow_html=True)
-    st.write("This section will allow you to play the video.")
-    
     
     # Define a function to be triggered when the button is clicked
     def on_button_click():
@@ -122,3 +138,18 @@ with tab2:
     # Button and action
     if st.button("Play"):
         on_button_click()
+
+
+# Contact Tab
+with tab3:
+    st.markdown(
+        """
+        <div id="contact_Content">
+            <br>
+            <center>
+                <p>Contact information is currently redacted.</p>
+            </center>
+            <br>
+        </div>
+        """, unsafe_allow_html=True
+    )
