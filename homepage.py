@@ -31,6 +31,7 @@ st.markdown(
             font-size: 100%;  
         }
 
+
         /* Body: Content Sections */
         #intro_Content, #contact_Content, #about_Content {
             width: 50%;
@@ -48,7 +49,6 @@ st.markdown(
             display: inline-block;
         }
 
-        
         /* Footer */
         .footer {
             text-align: center;
@@ -57,10 +57,6 @@ st.markdown(
             padding: 10px;
         }
 
-
-        .stTitle {
-            justify-content: center;
-        }
 
         .stTabs [role="tablist"] {
             display: flex;
@@ -73,6 +69,12 @@ st.markdown(
 
 # Header
 st.title("EXO-EXPLORE")
+
+if 'show_video' not in st.session_state:
+    st.session_state.show_video = True
+
+if 'show_button' not in st.session_state:
+    st.session_state.show_button = True
 
 # Navigation Tabs
 tab1, tab2, tab3 = st.tabs(["About", "Play", "Contact"])
@@ -105,26 +107,25 @@ with tab1:
 with tab2:
     # Intro section
     st.markdown("<div id='intro_Content'>", unsafe_allow_html=True)
-    
-    # Define a function to be triggered when the button is clicked
-    def on_button_click():
-        st.write("You clicked the Play button!")
-        
+      
     # Sample video data (local file or URL)
     data = "Welcome3.mp4"
+    image_data = "shrek.jpg"
     
-    # CSS to control video size (70% width, 40% height)
-    st.markdown(
-        """
-        <style>
-        .video-container {
-            max-width: 70%;
-            height: auto;
-            margin: auto;
-        }
-        </style>
-        """, unsafe_allow_html=True
-    )
+    # Check session state to show/hide video or image
+    if st.session_state.show_video:
+        # CSS for video container
+        st.markdown(
+            """
+            <style>
+            .video-container {
+                max-width: 70%;
+                height: auto;
+                margin: auto;
+            }
+            </style>
+            """, unsafe_allow_html=True
+        )
 
     # Display the video inside the custom-sized container
     st.markdown('<div class="video-container">', unsafe_allow_html=True)
@@ -132,8 +133,13 @@ with tab2:
     st.markdown('</div>', unsafe_allow_html=True)
     
     # Button and action
-    if st.button("Play"):
-        on_button_click()
+    if st.session_state.show_button and st.button("Play"):
+                st.session_state.show_video = False  # Hide video
+                st.session_state.show_button = False  # Hide button
+                st.image(image_data, caption="This is the image displayed after the video.")  # Show image
+    else:
+                # Display the image if the video is hidden
+                st.image(image_data, caption="This is the image displayed after the video.")
 
 
 # Contact Tab
@@ -143,7 +149,7 @@ with tab3:
         <div id="contact_Content">
             <br>
             <center>
-                <p>Contact information is being worked on.</p>
+                <p>Contact information is currently redacted.</p>
             </center>
             <br>
         </div>
