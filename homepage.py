@@ -1,7 +1,16 @@
 import streamlit as st
 
+import Exoplanet_3D
+
+# URL 
+#Exoplanet_3D_path = "C:\Users\Tim\Documents\2024 Nasa SpaceApp Challenge\Nasa-Challenge-SpaceApp2024\Exoplanet_3D.py" 
+
 # Set up the page configuration
 st.set_page_config(page_title="Flask Website", layout="wide")
+
+# Initialize the session state if it doesn't exist
+if 'current_page' not in st.session_state:
+    st.session_state.current_page = 'home'  # Default to home page
 
 # Injecting combined CSS styles
 st.markdown(
@@ -70,11 +79,6 @@ st.markdown(
 # Header
 st.title("EXO-EXPLORE")
 
-if 'show_video' not in st.session_state:
-    st.session_state.show_video = True
-
-if 'show_button' not in st.session_state:
-    st.session_state.show_button = True
 
 # Navigation Tabs
 tab1, tab2, tab3 = st.tabs(["About", "Play", "Contact"])
@@ -112,10 +116,8 @@ with tab2:
     data = "Welcome3.mp4"
     image_data = "shrek.jpg"
     
-    # Check session state to show/hide video or image
-    if st.session_state.show_video:
         # CSS for video container
-        st.markdown(
+    st.markdown(
             """
             <style>
             .video-container {
@@ -125,22 +127,26 @@ with tab2:
             }
             </style>
             """, unsafe_allow_html=True
-        )
+    )
 
     # Display the video inside the custom-sized container
     st.markdown('<div class="video-container">', unsafe_allow_html=True)
     st.video(data)
     st.markdown('</div>', unsafe_allow_html=True)
     
-    # Button and action
-    if st.session_state.show_button and st.button("Play"):
-                st.session_state.show_video = False  # Hide video
-                st.session_state.show_button = False  # Hide button
-                st.image(image_data, caption="This is the image displayed after the video.")  # Show image
-    else:
-                # Display the image if the video is hidden
-                st.image(image_data, caption="This is the image displayed after the video.")
-
+        # Buttons for navigation in the main content area
+    if st.button("Play Now!"):
+        st.session_state.current_page = 'exoplanet_3D'  # Set current page to exoplanet_3D
+        
+          # Display content based on the current page state
+        if st.session_state.current_page == 'home':
+            st.write("This is the homepage where you can navigate to different views.")
+            st.write("Click the button to view the 3D representation of exoplanets.")
+        elif st.session_state.current_page == 'exoplanet_3D':
+            Exoplanet_3D.main_content()  # Only calls this when current_page is 'exoplanet_3D'
+            # WARNING: 
+            # odd here ^^ might run into error StreamlitSetPageConfigMustBeFirstCommandError: set_page_config()  
+            
 
 # Contact Tab
 with tab3:
