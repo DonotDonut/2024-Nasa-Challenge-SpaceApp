@@ -96,12 +96,19 @@ with tab1:
         <div id="about_contact">
             <br>
             <center>
-                <p>Team Exo-Explore submitted this website to the 2024 NASA Space App: Exosky Challenge.</p>
-                <p>At <b>Stellar Explorers</b>, we invite you to embark on a cosmic adventure like no other.</p>
-                <p>Guided by <b>Stella</b>, your mission is to explore distant exoplanets and uncover the mysteries of the stars.</p>
-                <p>As an astronaut chosen for this extraordinary task, you’ll navigate through a holographic star map, selecting from ten neighboring stars, each with the potential to host new worlds.</p>
-                <p>Your exploration is vital to humanity's future, as you help identify planets that could one day sustain life.</p>
-                <p>Begin your journey, and let's chart the unknown together!</p>
+                <p>
+                    Team Exo-Explorer submitted this website to the 2024 NASA Space App: Exosky Challenge. 
+                    <br> <br>
+                    We invite you to embark on a cosmic adventure like no other. <br>
+                    Guided by our AI Stella, your mission is to <b>explore distant exoplanets</b> <br>
+                    and <b>uncover the mysteries of the stars</b>. As an astronaut chosen for this <br>
+                    extraordinary task, you’ll navigate through a holographic star map, selecting  <br>
+                    from ten neighboring stars, each with the potential to host new worlds.
+                    <br> <br>
+                    Your exploration is vital to humanity's future, as you help identify planets that could one day sustain life.
+                    <br> <br>
+                    Begin your journey, and let's chart the unknown together!
+                </p>
             </center>
             <br>
         </div>
@@ -164,5 +171,8 @@ with tab3:
             </center>
             <br>
         </div>
+        <footer>
+            <p> Team Exo-Explorer submitted this website to the 2024 NASA Space App: Exosky Challenge. </p>
+        </footer>
         """, unsafe_allow_html=True
     )
