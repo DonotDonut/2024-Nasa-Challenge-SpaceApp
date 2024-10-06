@@ -18,11 +18,14 @@ NASA Seattle Space App Challenge 2024
 
 # To Edit the Github Code in visual Studio Code 
 1) **Open Anaconda and Launch VScode**
-2) Open a termainal in viual studio code and install streamlit and astroquery 
+2) Open a termainal in viual studio code and install streamlit, astroquery, and streamlit-drawable-canvas 
     * to install astroquery type `pip install astroquery`
     * to install astroquery type `pip install streamlit`
     * to install astroquery type `pip install streamlit-drawable-canvas`
-9) **Run the Code:** Open the terminal in Visual Studio Code and type `streamlit run .\app.py` to execute the code.
+3) **Run the Code:** Open the terminal in Visual Studio Code go to proper directory and type the following to execute the code.
+4) `ls`
+5) `cd website`
+6) `streamlit run .\homepage.py` 
 
 # To Edit the Github Code in Jupyter 
 1) **Open Anaconda and Launch  Jupyter**
