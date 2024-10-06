@@ -98,27 +98,27 @@ with tab2:
     def on_button_click():
         st.write("You clicked the Play button!")
         
-    # Sample video data (local file, URL, or binary data)
+    # Sample video data (local file or URL)
     data = "Welcome3.mp4"
+    
+    # CSS to control video size (70% width, 40% height)
+    st.markdown(
+        """
+        <style>
+        .video-container {
+            max-width: 70%;
+            height: auto;
+            margin: auto;
+        }
+        </style>
+        """, unsafe_allow_html=True
+    )
 
-    # Video container with custom CSS for sizing
-st.markdown(
-    """
-    <style>
-    .video-container {
-        max-width: 70%;   /* Set width to 70% */
-        height: auto;     /* Keep height auto to maintain aspect ratio */
-        margin: auto;     /* Center the video */
-    }
-    </style>
-    """, unsafe_allow_html=True
-)
-
-# Create the container with custom width and height, and use st.video() to render the video
-st.markdown('<div class="video-container">', unsafe_allow_html=True)
-st.video(data)  # Use Streamlit's built-in method to display the video
-st.markdown('</div>', unsafe_allow_html=True)
-
-    # Add a button to interact with the video
-if st.button("Play"):
-    on_button_click()
+    # Display the video inside the custom-sized container
+    st.markdown('<div class="video-container">', unsafe_allow_html=True)
+    st.video(data)
+    st.markdown('</div>', unsafe_allow_html=True)
+    
+    # Button and action
+    if st.button("Play"):
+        on_button_click()
