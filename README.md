@@ -21,6 +21,7 @@ NASA Seattle Space App Challenge 2024
 2) Open a termainal in viual studio code and install streamlit and astroquery 
     * to install astroquery type `pip install astroquery`
     * to install astroquery type `pip install streamlit`
+    * to install astroquery type `pip install streamlit-drawable-canvas`
 9) **Run the Code:** Open the terminal in Visual Studio Code and type `streamlit run .\app.py` to execute the code.
 
 # To Edit the Github Code in Jupyter 
