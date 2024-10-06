@@ -10,8 +10,6 @@ from streamlit_drawable_canvas import st_canvas
 import io
 from PIL import Image, ImageOps
 
-# Page Configurations
-st.set_page_config(layout="centered", page_icon="📺", page_title="Exoplanet Gallery")
 
 # URLs for different planets
 kepler_url = "https://eyes.nasa.gov/apps/exo/#/planet/Kepler-808_b"

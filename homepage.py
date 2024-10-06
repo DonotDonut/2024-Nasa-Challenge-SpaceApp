@@ -144,9 +144,9 @@ with tab2:
             st.write("Click the button to view the 3D representation of exoplanets.")
         elif st.session_state.current_page == 'exoplanet_3D':
             # Open and execute file1.py
-            with open("Exoplanet_3D.py") as f:
-                code = f.read()
-                exec(code)  # Only calls this when current_page is 'exoplanet_3D'
+            #with open("Exoplanet_3D.py") as f:
+             #   code = f.read()
+              #  exec(code)  # Only calls this when current_page is 'exoplanet_3D'
             # WARNING: 
             # odd here ^^ might run into error StreamlitSetPageConfigMustBeFirstCommandError: set_page_config()  
             
