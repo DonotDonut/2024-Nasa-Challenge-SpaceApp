@@ -7,55 +7,68 @@ st.set_page_config(page_title="Flask Website", layout="wide")
 st.markdown(
     """
     <style>
-    /* Link Behaviors */
-    a:link, a:visited, a:hover, a:active {
-        text-decoration: none;
-        color: white;
-    }
+        /* Link Behaviors */
+        a:link, a:visited, a:hover, a:active {
+            text-decoration: none;
+            color: white;
+        }
 
-    /* Background and Text background-color: black;*/
-    .main {
-        background-image: url('starsImage.jpg'); /* Ensure this path is correct */
-        color: white;
-        
-    }
+        /* Background and Text background-color: black;*/
+        .main {
+            background-image: url('starsImage.jpg'); /* Ensure this path is correct */
+            color: white;
+            
+        }
 
-    /* Custom Main Section Layout */
-    .navigation_Bar {
-        padding: 1%;
-        border-top: 1px solid white;
-        width: 30%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 100%;
-        
-    }
+        /* Custom Main Section Layout */
+        .navigation_Bar {
+            padding: 1%;
+            border-top: 1px solid white;
+            width: 30%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 100%;  
+        }
 
-    /* Body: Content Sections */
-    #intro_Content, #contact_Content, #about_Content {
-        width: 50%;
-        height: 100%;
-        text-align: center;
-        margin: auto;
-    }
+        .stTabs[role="tablist"] {
+            justify-content: center;        
+        }
 
-    /* Play Button */
-    #play_Button {
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        font-size: 16px;
-        display: inline-block;
-    }
+        .stTitle {
+            justify-content: center;
+        }
 
-    /* Footer */
-    .footer {
-        text-align: center;
-        margin-top: 20px;
-        background-color: rgba(0, 0, 0, 0.5);
-        padding: 10px;
-    }
+        /* Body: Content Sections */
+        #intro_Content, #contact_Content, #about_Content {
+            width: 50%;
+            height: 100%;
+            text-align: center;
+            margin: auto;
+        }
+
+        /* Play Button */
+        #play_Button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            display: inline-block;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+        }
+
+
+        .stTabs [role="tablist"] {
+            display: flex;
+            justify-content: center;
+        }    
     </style>
     """,
     unsafe_allow_html=True
@@ -70,17 +83,18 @@ tab1, tab2, tab3 = st.tabs(["About", "Play", "Contact"])
 # About Tab
 with tab1:
     st.markdown("<div id='about_Content'>", unsafe_allow_html=True)
-    st.header("About")
+    #st.header("About")
     st.write("This section will provide information about Exo-Explore.")
     st.markdown("</div>", unsafe_allow_html=True)
 
 # Play Tab
 with tab2:
     st.markdown("<div id='intro_Content'>", unsafe_allow_html=True)
-    st.header("Play")
+    #st.header("Play")
     st.write("This section will allow you to play the video.")
     
     # Video Section
     st.video("Welcome3.mp4")
 
+    # Button Section
     st.button("Play")
