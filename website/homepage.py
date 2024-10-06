@@ -140,11 +140,10 @@ with tab2:
     st.markdown('<div class="video-container">', unsafe_allow_html=True)
     st.video(data)
     st.markdown('</div>', unsafe_allow_html=True)
-    
     # Function to run another Streamlit app
     def run_other_app():
         # Define the path to your other Streamlit app
-        exoplanet_app_path = r"C:\Users\Tim\Documents\2024 Nasa SpaceApp Challenge\Nasa-Challenge-SpaceApp2024\Exoplanet_3D.py"
+        exoplanet_app_path = r"C:\Users\Tim\Documents\2024 Nasa SpaceApp Challenge\Nasa-Challenge-SpaceApp2024\website\Exo-Explorer\Exoplanet_3D.py"
 
         # Run the other app as a subprocess
         subprocess.Popen(["streamlit", "run", exoplanet_app_path])
