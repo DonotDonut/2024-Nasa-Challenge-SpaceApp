@@ -261,8 +261,7 @@ with tab3:
                             Applied Physics and Astronomy Graduate from the University of Washington.
                             Experienced in research projects involving asteroid discovery, experimental 
                             nuclear physics, supernovae and gravitational wave detection with LIGO. 
-                            Proficient in app design, coding, Science and various technical projects.
-                            Worked on design, coding, and technical projects.
+                            Worked on app design, coding, science and various technical projects.
                         </p>
                     </div>
                 </div>
