@@ -1,7 +1,5 @@
 import streamlit as st
 
-# Page Configurations
-#st.set_page_config(layout="centered", page_icon="📺", page_title="Exoplanet Gallery")
 
 # CSS for Styling
 def set_css():

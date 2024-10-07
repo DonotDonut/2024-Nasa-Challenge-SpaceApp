@@ -2,10 +2,6 @@ import streamlit as st
 import subprocess
 
 
-
-# URL 
-#Exoplanet_3D_path = "C:\Users\Tim\Documents\2024 Nasa SpaceApp Challenge\Nasa-Challenge-SpaceApp2024\Exoplanet_3D.py" 
-
 # Set up the page configuration
 st.set_page_config(page_title="Flask Website", layout="wide")
 
