@@ -46,7 +46,7 @@ st.markdown(
         #intro_Content, #contact_Content, #about_Content {
             width: 50%;
             height: 100%;
-            text-align: center;
+            text-align: left;
             margin: auto;
         }
 
@@ -63,15 +63,39 @@ st.markdown(
         .footer {
             text-align: center;
             margin-top: 20px;
-            background-color: rgba(0, 0, 0, 0.5);
             padding: 10px;
+            bottom: 0;
+            position: fixed;
         }
-
 
         .stTabs [role="tablist"] {
             display: flex;
             justify-content: center;
         }    
+    
+        /* Team Member Tab*/
+        .team {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            /*background-color: grey;*/ /*Only used for visualizing divs remember to comment out!!*/
+            width: 60%;
+            text-align: left;
+        }
+
+        .member {
+            display: flex;
+        }
+
+        .memberName, .memberAbout {
+            flex: 1;
+        }
+
+        .memberName {
+            font-weight: bold;
+            padding-right: 20px;
+        }
+        
     </style>
     """,
     unsafe_allow_html=True
@@ -81,8 +105,9 @@ st.markdown(
 st.title("EXO-EXPLORE")
 
 
+
 # Navigation Tabs
-tab1, tab2, tab3 = st.tabs(["About", "Play", "Contact"])
+tab1, tab2, tab3 = st.tabs(["About", "Play", "Team Members"])
 
 # About Tab
 with tab1:
@@ -163,15 +188,81 @@ with tab2:
 with tab3:
     st.markdown(
         """
-        <div id="contact_Content">
+        <center>
+            <div class = "team">
+                <div class = "member">
+                    <div class = "memberName">
+                        <h3> Mathea Caole</h3>
+                    </div>
+                    <div class = "memberAbout">
+                        <p> 
+                            Senior undergraduate bioengineer student at the University of Washington. Worked on software, design, and storytelling.
+                        </p>
+                    </div>
+                </div>
+                <div class = "member">
+                    <div class = "memberName">
+                        <h3> Timothy Caole</h3>
+                    </div>
+                    <div class = "memberAbout">
+                        <p> 
+                            Graduate student in Electrical and Computer Engineering at the University of Washington and Co-Founder of SommerAI.
+                            Worked on web development and documentation strategy, with skills in GitHub and file management
+                        </p>
+                    </div>
+                </div>
+                <div class = "member">
+                    <div class = "memberName">
+                        <h3>Yasin Chowdhur</h3>
+                    </div>
+                    <div class = "memberAbout">
+                        <p> 
+                            University of Washington graduate Astrophysics student. Worked on Design, Coding and technical projects. 
+                        </p>
+                    </div>
+                </div>
+                <div class = "member">
+                    <div class = "memberName">
+                        <h3> Colin Christianson</h3>
+                    </div>
+                    <div class = "memberAbout">
+                        <p> 
+                            Founder & CEO of Tenacious Ventures, one of the only live production companies to produce a live 
+                            interactive webcast from the moon during the NASA Artemis 1 Callisto Mission. Worked on project 
+                            coordination, presentation, GPT creating and training, and AI generated video.
+                        </p>
+                    </div>
+                </div>
+                <div class = "member">
+                    <div class = "memberName">
+                        <h3> Giulianna Gasparotto</h3>
+                    </div>
+                    <div class = "memberAbout">
+                        <p> 
+                            Actress, Filmmaker, Writer, Photographer, AI Prompter, AI Designer.
+                        </p>
+                    </div>
+                </div>
+                <div class = "member">
+                    <div class = "memberName">
+                        <h3> Sara Saleh</h3>
+                    </div>
+                    <div class = "memberAbout">
+                        <p> 
+                            University of Washington graduate computer engineering student. Worked on storytelling, design, and coding assistance.
+                        </p>
+                    </div>
+                </div>
+            </center>
+
+    
+        <footer>
             <br>
             <center>
-                <p>Contact information is currently redacted.</p>
+                <p> 
+                    Team Exo-Explorer submitted this website to the 2024 NASA Space App: Exosky Challenge.
+                </p>
             </center>
-            <br>
-        </div>
-        <footer>
-            <p> Team Exo-Explorer submitted this website to the 2024 NASA Space App: Exosky Challenge. </p>
         </footer>
         """, unsafe_allow_html=True
     )
