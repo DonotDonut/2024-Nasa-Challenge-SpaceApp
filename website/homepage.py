@@ -24,8 +24,9 @@ st.markdown(
         }
 
         /* Background and Text background-color: black;*/
-        .main {
-            color: black;  
+        .main, .stApp {
+            background-color: #1a1a1a; /* Dark background */
+            color: white; /* White text */
         }
 
         /* Custom Main Section Layout */
@@ -55,23 +56,52 @@ st.markdown(
             border-radius: 5px;
             font-size: 16px;
             display: inline-block;
+        }
+
+        /*
+        #play_Button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            display: inline-block;
             width: 30%;
             height: 20%;
             justify-content:center;
         }
+        */
 
         /* Footer */
         .footer {
             text-align: center;
             margin-top: 20px;
+            background-color: #121212;
+            padding: 10px;
+            color: white; /* White text in footer */
+        }
+        /*.footer {
+            text-align: center;
+            margin-top: 20px;
             padding: 10px;
             bottom: 0;
             position: fixed;
-        }
+        }*/
 
         .stTabs [role="tablist"] {
             display: flex;
             justify-content: center;
+        }
+        .stTabs button {
+            padding: 10px 20px; /* Increase button padding */
+            font-size: 24px; /* Increase button text size */
+            margin: 0 5px; /* Adjust margin between tabs */
+            background-color: transparent; /* Ensure tab background is transparent */
+            border: 1px solid white; /* Add border for better visibility */
+            border-radius: 5px; /* Rounded corners */
+            color: white; /* Text color */
+        }
+        .stTabs button:hover {
+            background-color: rgba(255, 255, 255, 0.1); /* Hover effect */
         }   
 
         /* PLAY TAB*/
@@ -111,9 +141,14 @@ st.markdown(
 )
 
 # Header
-st.title("EXO-EXPLORE")
+#st.title("EXO-EXPLORE")
 
-
+st.markdown(
+    """
+    <h1 style='text-align: center; font-size: 70px; color: white;'>EXO-EXPLORER</h1>
+    """,
+    unsafe_allow_html=True
+)
 
 # Navigation Tabs
 tab1, tab2, tab3 = st.tabs(["About", "Play", "Team Members"])

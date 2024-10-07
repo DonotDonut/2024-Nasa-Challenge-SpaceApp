@@ -60,6 +60,21 @@ def set_css():
                 color: white; /* white headers*/
             }
                 
+            /*New Button Styling*/
+            div.stButton > button {
+                background-color: brown; / Brown background for buttons /
+                color: white; / White text on the button /
+                border: none; / Remove default borders /
+                padding: 0.5em 1em;
+                font-size: 16px;
+                border-radius: 10px; / Rounded corners /
+                cursor: pointer;
+            }
+            div.stButton > button:hover {
+                background-color: #8B4513; / Darker brown on hover /
+                color: white; / Keep white text on hover */
+            }
+                
         </style>
     """, unsafe_allow_html=True)
 
