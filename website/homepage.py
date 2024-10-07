@@ -25,9 +25,7 @@ st.markdown(
 
         /* Background and Text background-color: black;*/
         .main {
-            
-            color: black;
-            
+            color: black;  
         }
 
         /* Custom Main Section Layout */
@@ -57,6 +55,9 @@ st.markdown(
             border-radius: 5px;
             font-size: 16px;
             display: inline-block;
+            width: 30%;
+            height: 20%;
+            justify-content:center;
         }
 
         /* Footer */
@@ -71,9 +72,17 @@ st.markdown(
         .stTabs [role="tablist"] {
             display: flex;
             justify-content: center;
-        }    
-    
-        /* Team Member Tab*/
+        }   
+
+        /* PLAY TAB*/
+        .video-container {
+            max-width: 70%;
+            height: auto;
+            margin: auto;
+        }
+         
+
+        /* TEAM MEMBER TAB*/
         .team {
             display: flex;
             flex-direction: column;
@@ -125,7 +134,7 @@ with tab1:
                     Team Exo-Explorer submitted this website to the 2024 NASA Space App: Exosky Challenge. 
                     <br> <br>
                     We invite you to embark on a cosmic adventure like no other. <br>
-                    Guided by our AI Stella, your mission is to <b>explore distant exoplanets</b> <br>
+                    Guided by our AI, Stella, your mission is to <b>explore distant exoplanets</b> <br>
                     and <b>uncover the mysteries of the stars</b>. As an astronaut chosen for this <br>
                     extraordinary task, you’ll navigate through a holographic star map, selecting  <br>
                     from ten neighboring stars, each with the potential to host new worlds.
@@ -151,13 +160,14 @@ with tab2:
         # CSS for video container
     st.markdown(
             """
-            <style>
-            .video-container {
-                max-width: 70%;
-                height: auto;
-                margin: auto;
-            }
-            </style>
+                <footer>
+                    <br>
+                    <center>
+                        <p> 
+                            Team Exo-Explorer submitted this website to the 2024 NASA Space App: Exosky Challenge.
+                        </p>
+                    </center>
+                </footer>
             """, unsafe_allow_html=True
     )
 
@@ -207,7 +217,7 @@ with tab3:
                     <div class = "memberAbout">
                         <p> 
                             Graduate student in Electrical and Computer Engineering at the University of Washington and Co-Founder of SommerAI.
-                            Worked on web development and documentation strategy, with skills in GitHub and file management
+                            Worked on web development and documentation strategy with skills in GitHub and file management.
                         </p>
                     </div>
                 </div>
@@ -217,7 +227,7 @@ with tab3:
                     </div>
                     <div class = "memberAbout">
                         <p> 
-                            University of Washington graduate Astrophysics student. Worked on Design, Coding and technical projects. 
+                            University of Washington graduate with a Bachelors in Astrophysics. Worked on design, coding, and technical projects. 
                         </p>
                     </div>
                 </div>
@@ -249,7 +259,8 @@ with tab3:
                     </div>
                     <div class = "memberAbout">
                         <p> 
-                            University of Washington graduate computer engineering student. Worked on storytelling, design, and coding assistance.
+                            University of Washington graduate with a Bachelors in Computer Engineering. 
+                            Worked on storytelling, design, and coding assistance.
                         </p>
                     </div>
                 </div>
