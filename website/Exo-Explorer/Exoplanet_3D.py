@@ -316,12 +316,6 @@ def set_cssLanding():
         </style>
     """, unsafe_allow_html=True)
 
-def run_other_app(script_name):
-    try:
-        subprocess.run(["python", script_name], check=True)
-    except subprocess.CalledProcessError as e:
-        st.error(f"Failed to run {script_name}. Error: {e}")
-
 
 # Function to display the 360° view for the exoplanet
 def show_360_LandView(exoplanet_name, iframe_link):
@@ -362,10 +356,10 @@ elif st.session_state.page == 'telescope':
 
 
 elif st.session_state.page == 'k2_18_b':
-    set_cssLanding()
+    set_css()
     show_360_LandView("K2-18 b","https://skybox.blockadelabs.com/e/5da2b296403e5e4802d1fe2cebc0262c" )
 elif st.session_state.page == 'k2_18_c':
-    set_cssLanding()
+    set_css()
     show_360_LandView("K2-18 c", "https://skybox.blockadelabs.com/e/faf4efe95b76063c14095b5fcc72ec2c")
 #elif st.session_state.page == 'kelt_21_b':
 #    set_cssLanding()
