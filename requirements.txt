@@ -1,0 +1,8 @@
+astroquery==0.4.7
+matplotlib==3.8.4
+numpy==2.1.2
+pandas==2.2.3
+Pillow==10.4.0
+streamlit==1.32.0
+streamlit==1.39.0
+streamlit_drawable_canvas==0.9.3

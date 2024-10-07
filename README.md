@@ -22,6 +22,8 @@ NASA Seattle Space App Challenge 2024
     * to install astroquery type `pip install astroquery`
     * to install astroquery type `pip install streamlit`
     * to install astroquery type `pip install streamlit-drawable-canvas`
+    * pip install pipreqs  
+        do pipreqs 
 3) **Run the Code:** Open the terminal in Visual Studio Code go to proper directory and type the following to execute the code.
 4) `ls`
 5) `cd website`
