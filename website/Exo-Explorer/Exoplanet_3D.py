@@ -73,7 +73,7 @@ def show_360_view(exoplanet_name, iframe_link):
         if st.button("🔙 Go Back"):
             st.session_state.page = 'main'
     with col2:
-        if st.button("Landing View"):
+        if st.button("📍Landing View"):
             st.session_state.page = 'landing'
     with col3:
         if st.button("🔭 Telescope View"):
