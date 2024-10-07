@@ -254,11 +254,15 @@ with tab3:
                 </div>
                 <div class = "member">
                     <div class = "memberName">
-                        <h3>Yasin Chowdhur</h3>
+                        <h3>Yasin Chowdhury</h3>
                     </div>
                     <div class = "memberAbout">
                         <p> 
-                            University of Washington graduate with a Bachelors in Astrophysics. Worked on design, coding, and technical projects. 
+                            Applied Physics and Astronomy Graduate from the University of Washington.
+                            Experienced in research projects involving asteroid discovery, experimental 
+                            nuclear physics, supernovae and gravitational wave detection with LIGO. 
+                            Proficient in app design, coding, Science and various technical projects.
+                            Worked on design, coding, and technical projects.
                         </p>
                     </div>
                 </div>
