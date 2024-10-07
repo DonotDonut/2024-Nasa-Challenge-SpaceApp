@@ -12,8 +12,8 @@ from PIL import Image, ImageOps
 
 
 # URLs for different planets
-kepler_url = "https://eyes.nasa.gov/apps/exo/#/planet/Kepler-808_b"
-hats_url = "https://eyes.nasa.gov/apps/exo/#/planet/HATS-74_A_b"
+kepler_url = "https://eyes.nasa.gov/apps/exo/#/planet/K2-18_b"
+hats_url = "https://eyes.nasa.gov/apps/exo/#/planet/K2-18_c"
 kelt_url = "https://eyes.nasa.gov/apps/exo/#/planet/KELT-21_b"
 
 # CSS for Styling Bubbles with Images
@@ -128,11 +128,11 @@ def exoplanent_content():
     col1, col2, col3 = st.columns(3)
 
     with col1:
-        if st.button("Kepler-808 b"):
+        if st.button("K2-18 b"):
             st.session_state.page = 'Kepler-808_b'
 
     with col2:
-        if st.button("HATS-74 A b"):
+        if st.button("K2-18 c"):
             st.session_state.page = 'HATS-74_A_b'
     
     with col3:
@@ -327,7 +327,7 @@ elif st.session_state.page == 'telescope':
 # Showing Landing View
 elif st.session_state.page == 'landing':
     set_cssLanding()
-    show_360_view('Tau Ceti E', 'https://skybox.blockadelabs.com/e/7ccd18d63ee7d666a128776f4f36f605')  # Show the 360° view of Tau Ceti E
+    show_360_view('K2-18 b', 'https://skybox.blockadelabs.com/e/5da2b296403e5e4802d1fe2cebc0262c')  # Show the 360° view of Tau Ceti E
 
 
 
