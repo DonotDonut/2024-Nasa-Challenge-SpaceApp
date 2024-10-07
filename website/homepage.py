@@ -229,6 +229,11 @@ with tab2:
 with tab3:
     st.markdown(
         """
+        <style>
+            .team, .team h3, .team p {
+                color: white;
+            }
+        </style>
         <center>
             <div class = "team">
                 <div class = "member">
