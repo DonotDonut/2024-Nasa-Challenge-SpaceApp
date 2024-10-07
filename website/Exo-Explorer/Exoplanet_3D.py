@@ -90,17 +90,11 @@ def show_360_view(exoplanet_name, iframe_link):
     with col2:
         if st.button("📍Landing View"):
             if exoplanet_name == "Kelt-21 b":
-                st.session_state.page = 'kelt_21_b'
-                
+                st.session_state.page = 'kelt_21_b'  
             elif exoplanet_name == "K2-18 c":
                 st.session_state.page = 'k2_18_c'
-                
-                
             elif exoplanet_name == "K2-18 b":
                 st.session_state.page = 'k2_18_b'
-               
-        
-        
     with col3:
         if st.button("🔭 Telescope View"):
             st.session_state.page = 'telescope'
@@ -112,11 +106,11 @@ def main_content():
     # Create a bubble container with clickable bubbles
     cols = st.columns(3)
     starNames = [
-        "Proxima Centra",
+        "K2-18",
         "Ross 128",
         "Wolf 1067",
         "Kapteyn's Star", 
-        "K2-18", 
+        "Proxima Centra", 
         "Tau Centauri", 
         "GJ 667C", 
         "Gliese 832", 
@@ -127,14 +121,14 @@ def main_content():
     for i in range(0, 9, 3): # Indexing error so I'm only including 9 (Will fix in the future)
         with cols[0]:  
             if st.button(starNames[i]):
-                None
+                if starNames[i] == "K2-18":
+                    st.session_state.page = starNames[i]
+                else:
+                    None
                 #st.session_state.page = starNames[i]
         with cols[1]: 
             if st.button(starNames[i+1]):
-                if starNames[i+1] == "K2-18":
-                    st.session_state.page = starNames[i+1]
-                else:
-                    None
+                None
         with cols[2]: 
             if st.button(starNames[i+2]):
                 None
@@ -316,6 +310,13 @@ def set_cssLanding():
 def show_360_LandView(exoplanet_name, iframe_link):
     st.title(f"{exoplanet_name} - 360° View")
     st.markdown(f'<iframe src="{iframe_link}" width=700 height=700 style="border:0;" allow="fullscreen"></iframe>', unsafe_allow_html=True)
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        if st.button("🔙 Go Back"):
+            st.session_state.page = 'main'
+    with col3:
+        if st.button("🔭 Telescope View"):
+            st.session_state.page = 'telescope'
 
 
 # Main App Logic
