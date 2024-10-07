@@ -52,12 +52,12 @@ def set_css():
             }
                 
             .main, .stApp {
-                background-color: white;
-                color: black;
+                background-color: #1a1a1a; /*Darker background*/
+                color: white; /* White text for better contrast*/
             }
             
             .stApp h1, .stApp h2 {
-                color: black;
+                color: white; /* white headers*/
             }
                 
         </style>
@@ -276,11 +276,11 @@ def set_cssLanding():
     st.markdown("""
         <style>
             body {
-                background-color: #f5f5f5;
+                background-color: #1a1a1a; /*Darker background*/
             }
             h1 {
                 text-align: center;
-                color: #333;
+                color: #fff; /*white text*/
             }
         </style>
     """, unsafe_allow_html=True)
@@ -328,7 +328,3 @@ elif st.session_state.page == 'telescope':
 elif st.session_state.page == 'landing':
     set_cssLanding()
     show_360_view('K2-18 b', 'https://skybox.blockadelabs.com/e/5da2b296403e5e4802d1fe2cebc0262c')  # Show the 360° view of Tau Ceti E
-
-
-
-
