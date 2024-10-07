@@ -18,26 +18,21 @@ NASA Seattle Space App Challenge 2024
 
 # To Edit the Github Code in visual Studio Code 
 1) **Open Anaconda and Launch VScode**
-2) Open a termainal in viual studio code and install streamlit and astroquery 
+2) Open a termainal in viual studio code and install streamlit, astroquery, and streamlit-drawable-canvas 
     * to install astroquery type `pip install astroquery`
     * to install astroquery type `pip install streamlit`
-9) **Run the Code:** Open the terminal in Visual Studio Code and type `streamlit run .\app.py` to execute the code.
+    * to install astroquery type `pip install streamlit-drawable-canvas`
+3) **Run the Code:** Open the terminal in Visual Studio Code go to proper directory and type the following to execute the code.
+4) `ls`
+5) `cd website`
+6) `streamlit run .\homepage.py` 
 
 # To Edit the Github Code in Jupyter 
-1) **Open Anaconda and Launch  Jupyter**
-2) Open a termainal in viual studio code and install streamlit and astroquery 
-    * to install astroquery type `pip install astroquery`
-    * to install astroquery type `pip install streamlit`
-9) **Run the Code:** Open the terminal in Visual Studio Code and type `streamlit run .\app.py` to execute the code.
-
-
-### Using Jupyter Notebook:
-
-1. Open **Anaconda** > Launch **Jupyter Notebook** > Navigate to your directory for the space apps project.
-2. Open the Python file (with the `.py` extension) or both the `.py` and `.ipynb` files if needed.
-3. Open the terminal in Jupyter Notebook while in the project directory.
-4. Use the terminal to run `pip install` for any required packages not included with Anaconda.
-5. Once all the packages are installed, run the code or app to ensure everything works correctly.
+1)  Open **Anaconda** > Launch **Jupyter Notebook** > Navigate to your directory for the space apps project.
+2) Open the Python file (with the `.py` extension) or both the `.py` and `.ipynb` files if needed.
+3) Open the terminal in Jupyter Notebook while in the project directory.
+4) Use the terminal to run `pip install` for any required packages not included with Anaconda.
+5) Once all the packages are installed, run the code or app to ensure everything works correctly.
 
 **Note**: The `.ipynb` format is highly recommended for step-by-step code execution and debugging. It provides better visibility into your workflow.
 
