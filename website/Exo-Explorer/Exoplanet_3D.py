@@ -90,6 +90,20 @@ def show_360_view(exoplanet_name, iframe_link):
     with col2:
         if st.button("📍Landing View"):
             st.session_state.page = 'landing'
+            
+            if exoplanet_name == "Kelt-21 b":
+                run_other_app('360-Planets-POV\Kelt-21_b.py')
+                st.success("Landing to Kelt-21 b")
+                
+            elif exoplanet_name == "K2-18 c":
+                run_other_app('360-Planets-POV\K2-18_c.py')
+                st.success("Landing to K2-18 c")
+                
+            elif exoplanet_name == "K2-18 b":
+                run_other_app('360-Planets-POV\K2-18_b.py')
+                st.success("Landing to K2-18 b")
+        
+        
     with col3:
         if st.button("🔭 Telescope View"):
             st.session_state.page = 'telescope'
@@ -300,6 +314,13 @@ def set_cssLanding():
         </style>
     """, unsafe_allow_html=True)
 
+def run_other_app(script_name):
+    try:
+        subprocess.run(["python", script_name], check=True)
+    except subprocess.CalledProcessError as e:
+        st.error(f"Failed to run {script_name}. Error: {e}")
+
+
 # Function to display the 360° view for the exoplanet
 def show_360_LandView(exoplanet_name, iframe_link):
     st.title(f"{exoplanet_name} - 360° View")
@@ -337,9 +358,3 @@ elif st.session_state.page == 'telescope':
     set_css()
     show_telescope_view()
 
-
-
-# Showing Landing View
-elif st.session_state.page == 'landing':
-    set_cssLanding()
-    show_360_view('K2-18 b', 'https://skybox.blockadelabs.com/e/5da2b296403e5e4802d1fe2cebc0262c')  # Show the 360° view of Tau Ceti E
