@@ -289,6 +289,11 @@ def show_telescope_view():
                 file_name="final_star_chart.png",
                 mime="image/png"
             )
+            
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        if st.button("🔙 Go Back"):
+            st.session_state.page = 'main'
 
 
 # CSS for Styling
