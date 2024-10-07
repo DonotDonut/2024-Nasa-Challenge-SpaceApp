@@ -90,20 +90,15 @@ def show_360_view(exoplanet_name, iframe_link):
     with col2:
         if st.button("📍Landing View"):
             if exoplanet_name == "Kelt-21 b":
-                #run_other_app('360-Planets-POV\Kelt-21_b.py')
-                #st.success("Landing to Kelt-21 b")
-                #st.write("test")
                 st.session_state.page = 'kelt_21_b'
                 
             elif exoplanet_name == "K2-18 c":
                 st.session_state.page = 'k2_18_c'
-                #run_other_app('360-Planets-POV\K2-18_c.py')
-                #st.success("Landing to K2-18 c")
+                
                 
             elif exoplanet_name == "K2-18 b":
                 st.session_state.page = 'k2_18_b'
-                #run_other_app('360-Planets-POV\K2-18_b.py')
-                #st.success("Landing to K2-18 b")
+               
         
         
     with col3:
@@ -307,7 +302,7 @@ def set_cssLanding():
     st.markdown("""
         <style>
             body {
-                background-color: #1a1a1a; /*Darker background*/
+                background-color: black; /*Darker background*/
             }
             h1 {
                 text-align: center;
@@ -367,8 +362,8 @@ elif st.session_state.page == 'k2_18_b':
 elif st.session_state.page == 'k2_18_c':
     set_cssLanding()
     show_360_LandView("K2-18 c", "https://skybox.blockadelabs.com/e/faf4efe95b76063c14095b5fcc72ec2c")
-#elif st.session_state.page == 'kelt_21_b':
-#    set_cssLanding()
-#    show_360_LandView("KELT-21 b", )
+elif st.session_state.page == 'kelt_21_b':
+    set_cssLanding()
+    show_360_LandView("KELT-21 b", "https://skybox.blockadelabs.com/e/7ccd18d63ee7d666a128776f4f36f605")
 
 
