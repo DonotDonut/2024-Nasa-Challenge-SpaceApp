@@ -307,11 +307,11 @@ elif st.session_state.page == 'K2-18':
 # Show the 360° view for each planet based on user choice
 elif st.session_state.page == 'Kepler-808_b':
     set_css()
-    show_360_view('Kepler-808 b', kepler_url)
+    show_360_view('K2-18 b', kepler_url)
 
 elif st.session_state.page == 'HATS-74_A_b':
     set_css()
-    show_360_view('HATS-74 A b', hats_url)
+    show_360_view('K2-18 c', hats_url)
 
 elif st.session_state.page == 'KELT-21_b':
     set_css()
