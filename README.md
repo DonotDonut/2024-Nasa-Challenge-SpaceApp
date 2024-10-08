@@ -21,9 +21,10 @@ Our project is a web-based game designed using Streamlit that invites middle sch
 1) **Open Anaconda and Launch VScode**
 2) Open a termainal in viual studio code and install streamlit, astroquery, and streamlit-drawable-canvas 
     * to install astroquery type `pip install astroquery`
-    * to install astroquery type `pip install streamlit`
-        * pipreqs is used to create a website using python 
-    * to install astroquery type `pip install streamlit-drawable-canvas`
+       * astroquery is used to create access NASA database 
+    * to install streamlit type `pip install streamlit`
+        * streamlit is used to create a website using python 
+    * to install streamlit-drawable-canvas type `pip install streamlit-drawable-canvas`
         * streamlit-drawable-canvas is used for drawing on the starchart 
     * to install pipreqs type `pip install pipreqs` 
         * pipreqs is used to publish the streamlit website  
