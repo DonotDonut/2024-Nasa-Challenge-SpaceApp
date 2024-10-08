@@ -1,6 +1,7 @@
 # SpaceApp2024
 NASA Seattle Space App Challenge 2024
 
+Our project is a web-based game designed using Streamlit that invites middle school students to embark on a virtual astronaut mission to explore exoplanets and chart stars for future space explorers. By incorporating data from NASA and Gaia Data Release 3 (Gaia DR3), students can interact with a 3D model of a chosen exoplanet and view its terrain from an astronaut’s perspective. The game introduces players to Stella, an AI guide, who helps them navigate the experience, starting with selecting a star and exoplanet from our galaxy. Players can explore the exoplanet’s surface through AI-generated renderings or view an interactive star map based on Gaia DR3 data, where they can create personalized constellations. This project aims to ignite interest in space exploration and STEM education while making the game accessible to students worldwide via a web-app format. Future versions will expand AI features, including real-time chatbots, sign language translations, and enhanced accessibility tools. Developed primarily in Python, the project utilizes NASA’s Eyes on Exoplanets, Streamlit, Anaconda, Github, and Visual Studio Code for development and testing.
 
 # Connecting Github to VSC
 1) **Download and Install Anaconda:** Visit the [Anaconda website](https://www.anaconda.com/download) and download the installer for your specific operating system.
@@ -21,8 +22,11 @@ NASA Seattle Space App Challenge 2024
 2) Open a termainal in viual studio code and install streamlit, astroquery, and streamlit-drawable-canvas 
     * to install astroquery type `pip install astroquery`
     * to install astroquery type `pip install streamlit`
+        * pipreqs is used to create a website using python 
     * to install astroquery type `pip install streamlit-drawable-canvas`
-    * to install astroquery type `pip install pipreqs` 
+        * streamlit-drawable-canvas is used for drawing on the starchart 
+    * to install pipreqs type `pip install pipreqs` 
+        * pipreqs is used to publish the streamlit website  
 3) **Run the Code:** Open the terminal in Visual Studio Code go to proper directory and type the following to execute the code.
 4) `ls`
 5) `cd website`
