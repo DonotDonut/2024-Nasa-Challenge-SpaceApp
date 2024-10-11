@@ -43,7 +43,8 @@ def set_css():
                 background-color: #1a1a1a; /* Darker background */
                 color: white; /* White text */
             }
-            /* Button Styling */
+            
+            /* Navigating (Regular) Button Styling */
             div.stButton > button {
                 background-color: brown; /* Button background */
                 color: white; /* Button text */
@@ -53,8 +54,30 @@ def set_css():
                 border-radius: 10px; /* Rounded corners */
                 cursor: pointer; /* Pointer cursor */
             }
+            
             div.stButton > button:hover {
                 background-color: #8B4513; /* Darker brown on hover */
+            }
+            
+            /* Download Button Styling */
+            div.stDownloadButton > button {
+                background-color: brown; /* Button background */
+                color: white; /* Button text */
+                border: none; /* No border */
+                padding: 0.5em 1em; /* Padding */
+                font-size: 16px; /* Font size */
+                border-radius: 10px; /* Rounded corners */
+                cursor: pointer; /* Pointer cursor */
+            }
+            
+            div.stDownloadButton:hover {
+                background-color: #8B4513; /* Darker brown on hover */
+            }
+            
+            
+            /* Title Styling */
+             h1, h2, h3, h4, h5, h6 {
+                color: white;
             }
         </style>
     """, unsafe_allow_html=True)
@@ -95,14 +118,18 @@ def show_360_view():
 
     col1, col2, col3 = st.columns(3)
     with col1:
-         if st.button("🔙 Go Back"):
-            st.session_state.page = 'exoplanet'
-    with col2:
-         if st.button("📍 Landing View"):
+        if st.button("📍 Landing View"):
             st.markdown(f'<iframe src="{landing_link}" width=700 height=700 style="border:0;" allow="fullscreen"></iframe>', unsafe_allow_html=True)
-    with col3:
+    
+    with col2:
         if st.button("🔭 Telescope View"):
             st.session_state.page = 'telescope'
+    
+    with col3:
+        if st.button("🔙 Go Back"):
+            st.session_state.page = 'exoplanet'
+   
+       
        
             
 
