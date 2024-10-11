@@ -1,163 +1,137 @@
 import streamlit as st
-import subprocess  # Import subprocess module
+import subprocess
 import matplotlib.pyplot as plt
 import numpy as np
-from astroquery.gaia import Gaia
 import pandas as pd
 import time
+from astroquery.gaia import Gaia
 from astroquery.exceptions import RemoteServiceError
 from streamlit_drawable_canvas import st_canvas
 import io
 from PIL import Image, ImageOps
 
+# Dictionary to hold star data
+star_data = {
+    "K2-18": {
+        "exoplanets": {
+            "K2-18 b": {
+                "orbit_url": "https://eyes.nasa.gov/apps/exo/#/planet/K2-18_b",
+                "landing_url": "https://skybox.blockadelabs.com/e/5da2b296403e5e4802d1fe2cebc0262c"
+            },
+            "K2-18 c": {
+                "orbit_url": "https://eyes.nasa.gov/apps/exo/#/planet/K2-18_c",
+                "landing_url": "https://skybox.blockadelabs.com/e/faf4efe95b76063c14095b5fcc72ec2c"
+            }
+        }
+    },
+    "Kelt 21": {
+        "exoplanets": {
+            "KELT-21 b": {
+                "orbit_url": "https://eyes.nasa.gov/apps/exo/#/planet/KELT-21_b",
+                "landing_url": "https://skybox.blockadelabs.com/e/7ccd18d63ee7d666a128776f4f36f605"
+            }
+        }
+    }
+    # Add more stars and their exoplanets as needed
+}
 
-# URLs for different planets
-kepler_url = "https://eyes.nasa.gov/apps/exo/#/planet/K2-18_b"
-hats_url = "https://eyes.nasa.gov/apps/exo/#/planet/K2-18_c"
-kelt_url = "https://eyes.nasa.gov/apps/exo/#/planet/KELT-21_b"
-
-# CSS for Styling Bubbles with Images
+# CSS for Styling
 def set_css():
     st.markdown("""
-        <style>            
-            .bubble-container {
-                display: flex;
-                justify-content: center;
-                flex-wrap: wrap;
-                margin: 20px auto;
-                color: black;
-            }
-            .bubble {
-                display: inline-block;
-                width: 150px;
-                height: 150px;
-                border-radius: 75px;
-                background: #007BFF;
-                margin: 20px;
-                transition: transform 0.3s;
-                overflow: hidden;
-                cursor: pointer;
-                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-                color: black;
-            }
-            .bubble img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                border-radius: 75px;
-                color: black;
-            }
-            .bubble:hover {
-                transform: scale(1.1);
-            }
-                
+        <style>
             .main, .stApp {
-                background-color: #1a1a1a; /*Darker background*/
-                color: white; /* White text for better contrast*/
+                background-color: #1a1a1a; /* Darker background */
+                color: white; /* White text */
             }
             
-            .stApp h1, .stApp h2 {
-                color: white; /* white headers*/
-            }
-                
-            /*New Button Styling*/
+            /* Navigating (Regular) Button Styling */
             div.stButton > button {
-                background-color: brown; / Brown background for buttons /
-                color: white; / White text on the button /
-                border: none; / Remove default borders /
-                padding: 0.5em 1em;
-                font-size: 16px;
-                border-radius: 10px; / Rounded corners /
-                cursor: pointer;
+                background-color: brown; /* Button background */
+                color: white; /* Button text */
+                border: none; /* No border */
+                padding: 0.5em 1em; /* Padding */
+                font-size: 16px; /* Font size */
+                border-radius: 10px; /* Rounded corners */
+                cursor: pointer; /* Pointer cursor */
             }
+            
             div.stButton > button:hover {
-                background-color: #8B4513; / Darker brown on hover /
-                color: white; / Keep white text on hover */
+                background-color: #8B4513; /* Darker brown on hover */
             }
-                
+            
+            /* Download Button Styling */
+            div.stDownloadButton > button {
+                background-color: brown; /* Button background */
+                color: white; /* Button text */
+                border: none; /* No border */
+                padding: 0.5em 1em; /* Padding */
+                font-size: 16px; /* Font size */
+                border-radius: 10px; /* Rounded corners */
+                cursor: pointer; /* Pointer cursor */
+            }
+            
+            div.stDownloadButton:hover {
+                background-color: #8B4513; /* Darker brown on hover */
+            }
+            
+            
+            /* Title Styling */
+             h1, h2, h3, h4, h5, h6 {
+                color: white;
+            }
         </style>
     """, unsafe_allow_html=True)
 
-# Function to show 360° view for exoplanets
-def show_360_view(exoplanet_name, iframe_link):
-    st.title(f"{exoplanet_name} - 360° View")
-    st.markdown(f'<iframe src="{iframe_link}" width=700 height=700 style="border:0;" allow="fullscreen"></iframe>', unsafe_allow_html=True)
-    
-    col1, col2, col3 = st.columns(3)
-    with col1:
-        if st.button("🔙 Go Back"):
-            st.session_state.page = 'main'
-    with col2:
-        if st.button("📍Landing View"):
-            if exoplanet_name == "Kelt-21 b":
-                st.session_state.page = 'kelt_21_b'  
-            elif exoplanet_name == "K2-18 c":
-                st.session_state.page = 'k2_18_c'
-            elif exoplanet_name == "K2-18 b":
-                st.session_state.page = 'k2_18_b'
-    with col3:
-        if st.button("🔭 Telescope View"):
-            st.session_state.page = 'telescope'
-
-# Choosinh a star
+# Main content to select stars
 def main_content():
     st.title("Stars")
+    for star_name in star_data.keys():
+        if st.button(star_name):
+            st.session_state.page = "exoplanet"
+            st.session_state.selected_star = star_name
 
-    # Create a bubble container with clickable bubbles
-    cols = st.columns(3)
-    starNames = [
-        "K2-18",
-        "Ross 128",
-        "Wolf 1067",
-        "Kapteyn's Star", 
-        "Proxima Centra", 
-        "Tau Centauri", 
-        "GJ 667C", 
-        "Gliese 832", 
-        "YZ Centauri", 
-        "HD 219134"
-    ]
+# Content for selecting exoplanets
+def exoplanet_content():
+    selected_star = st.session_state.selected_star
+    st.title(f"Explore Exoplanets in {selected_star}")
 
-    for i in range(0, 9, 3): # Indexing error so I'm only including 9 (Will fix in the future)
-        with cols[0]:  
-            if st.button(starNames[i]):
-                if starNames[i] == "K2-18":
-                    st.session_state.page = starNames[i]
-                else:
-                    None
-                #st.session_state.page = starNames[i]
-        with cols[1]: 
-            if st.button(starNames[i+1]):
-                None
-        with cols[2]: 
-            if st.button(starNames[i+2]):
-                None
-                #st.session_state.page = starNames[i+2]
+    exoplanets = star_data[selected_star]["exoplanets"]
+    for exoplanet_name, urls in exoplanets.items():
+        if st.button(exoplanet_name):
+            st.session_state.page = "360_view"
+            st.session_state.selected_exoplanet = exoplanet_name
+            st.session_state.selected_urls = urls
 
-    ## Check for specific button action
-    #if st.button("K2-18"):
-    #    st.session_state.page = 'K2-18'
-    
+    if st.button("🔙 Go Back"):
+        st.session_state.page = 'main'
 
+# Showing the Planets Orbit POV Page
+def show_360_view():
+    exoplanet_name = st.session_state.selected_exoplanet
+    urls = st.session_state.selected_urls
+    st.title(f"{exoplanet_name} - 360° View")
 
-# Main content with buttons for different exoplanets
-def exoplanent_content():
-    st.title("Explore Exoplanets")
+    orbit_link = urls['orbit_url']
+    landing_link = urls['landing_url']
 
-    # Create a bubble container with clickable bubbles
+    st.markdown(f'<iframe src="{orbit_link}" width=700 height=700 style="border:0;" allow="fullscreen"></iframe>', unsafe_allow_html=True)
+
     col1, col2, col3 = st.columns(3)
-
     with col1:
-        if st.button("K2-18 b"):
-            st.session_state.page = 'Kepler-808_b'
-
+        if st.button("📍 Landing View"):
+            st.markdown(f'<iframe src="{landing_link}" width=700 height=700 style="border:0;" allow="fullscreen"></iframe>', unsafe_allow_html=True)
+    
     with col2:
-        if st.button("K2-18 c"):
-            st.session_state.page = 'HATS-74_A_b'
+        if st.button("🔭 Telescope View"):
+            st.session_state.page = 'telescope'
     
     with col3:
-        if st.button("KELT-21 b"):
-            st.session_state.page = 'KELT-21_b'
+        if st.button("🔙 Go Back"):
+            st.session_state.page = 'exoplanet'
+   
+       
+       
+            
 
 # Function to display telescope/star chart view
 def show_telescope_view():
@@ -289,81 +263,29 @@ def show_telescope_view():
                 file_name="final_star_chart.png",
                 mime="image/png"
             )
-            
+    
+    # Go Back button to return to star selection
+    st.write("")  # Add spacing
+
+    # format for go back button 
     col1, col2, col3 = st.columns(3)
+    
+    # go back button 
     with col1:
         if st.button("🔙 Go Back"):
             st.session_state.page = 'main'
-
-
-# CSS for Styling
-def set_cssLanding():
-    st.markdown("""
-        <style>
-            body {
-                background-color: black; /*Darker background*/
-            }
-            h1 {
-                text-align: center;
-                color: #fff; /*white text*/
-            }
-        </style>
-    """, unsafe_allow_html=True)
-
-
-# Function to display the 360° view for the exoplanet
-def show_360_LandView(exoplanet_name, iframe_link):
-    st.title(f"{exoplanet_name} - 360° View")
-    st.markdown(f'<iframe src="{iframe_link}" width=700 height=700 style="border:0;" allow="fullscreen"></iframe>', unsafe_allow_html=True)
-    col1, col2, col3 = st.columns(3)
-    with col1:
-        if st.button("🔙 Go Back"):
-            st.session_state.page = 'main'
-    with col3:
-        if st.button("🔭 Telescope View"):
-            st.session_state.page = 'telescope'
 
 
 # Main App Logic
 if 'page' not in st.session_state:
     st.session_state.page = 'main'
 
+set_css()  # Apply CSS styles
 if st.session_state.page == 'main':
-    set_css()
     main_content()
-
-elif st.session_state.page == 'K2-18':
-    set_css()
-    exoplanent_content()
-
-
-# Show the 360° view for each planet based on user choice
-elif st.session_state.page == 'Kepler-808_b':
-    set_css()
-    show_360_view('K2-18 b', kepler_url)
-
-elif st.session_state.page == 'HATS-74_A_b':
-    set_css()
-    show_360_view('K2-18 c', hats_url)
-
-elif st.session_state.page == 'KELT-21_b':
-    set_css()
-    show_360_view('KELT-21 b', kelt_url)
-
-# Show telescope view when the user clicks the "Telescope View" button
+elif st.session_state.page == 'exoplanet':
+    exoplanet_content()
+elif st.session_state.page == '360_view':
+    show_360_view()
 elif st.session_state.page == 'telescope':
-    set_css()
     show_telescope_view()
-
-
-elif st.session_state.page == 'k2_18_b':
-    set_css()
-    show_360_LandView("K2-18 b","https://skybox.blockadelabs.com/e/5da2b296403e5e4802d1fe2cebc0262c" )
-elif st.session_state.page == 'k2_18_c':
-    set_css()
-    show_360_LandView("K2-18 c", "https://skybox.blockadelabs.com/e/faf4efe95b76063c14095b5fcc72ec2c")
-elif st.session_state.page == 'kelt_21_b':
-    set_cssLanding()
-    show_360_LandView("KELT-21 b", "https://skybox.blockadelabs.com/e/7ccd18d63ee7d666a128776f4f36f605")
-
-

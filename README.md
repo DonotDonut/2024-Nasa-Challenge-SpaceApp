@@ -29,9 +29,7 @@ Our project is a web-based game designed using Streamlit that invites middle sch
     * to install pipreqs type `pip install pipreqs` 
         * pipreqs is used to publish the streamlit website  
 3) **Run the Code:** Open the terminal in Visual Studio Code go to proper directory and type the following to execute the code.
-4) `ls`
-5) `cd website`
-6) `streamlit run .\homepage.py` 
+4) `streamlit run .\homepage.py` 
 
 # To Edit the Github Code in Jupyter 
 1)  Open **Anaconda** > Launch **Jupyter Notebook** > Navigate to your directory for the space apps project.
