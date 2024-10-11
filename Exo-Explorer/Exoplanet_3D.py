@@ -11,10 +11,37 @@ import io
 from PIL import Image, ImageOps
 
 
-# URLs for different planets
-kepler_url = "https://eyes.nasa.gov/apps/exo/#/planet/K2-18_b"
-hats_url = "https://eyes.nasa.gov/apps/exo/#/planet/K2-18_c"
-kelt_url = "https://eyes.nasa.gov/apps/exo/#/planet/KELT-21_b"
+# global variables  
+#list of star names 
+starNames = [
+    "K2-18", "Kelt 21", "Ross 128",
+    "Wolf 1067", "Kapteyn's Star", "Proxima Centra", 
+    "Tau Centauri", "GJ 667C", "Gliese 832", 
+    "YZ Centauri", "HD 219134"
+    # Add more starts when needed 
+]
+
+#list of star names 
+exoplanets = {
+    "K2-18" : ["K2-18 b", "K2-18 c"],
+    "Kelt 21" : ["KELT-21 b"],
+     # Add more exoplants to their stars when needed 
+}
+
+# URLs for different planets outer orbit pov 
+orbit_urls = {
+    "kepler_url" : "https://eyes.nasa.gov/apps/exo/#/planet/K2-18_b" ,
+    "hats_url" : "https://eyes.nasa.gov/apps/exo/#/planet/K2-18_c" , 
+    "kelt_url" : "https://eyes.nasa.gov/apps/exo/#/planet/KELT-21_b"
+}
+
+# URL for different planets landing pov 
+landing_urls = {
+"K2-18 b" : "https://skybox.blockadelabs.com/e/5da2b296403e5e4802d1fe2cebc0262c" ,
+"k2_18c_landing" : "https://skybox.blockadelabs.com/e/faf4efe95b76063c14095b5fcc72ec2c" ,
+"kelt_21_landing" : "https://skybox.blockadelabs.com/e/7ccd18d63ee7d666a128776f4f36f605"
+}
+
 
 # CSS for Styling Bubbles with Images
 def set_css():
@@ -60,7 +87,7 @@ def set_css():
                 color: white; /* white headers*/
             }
                 
-            /*New Button Styling*/
+            /* Button Styling ------------------------- */
             div.stButton > button {
                 background-color: brown; / Brown background for buttons /
                 color: white; / White text on the button /
@@ -74,90 +101,150 @@ def set_css():
                 background-color: #8B4513; / Darker brown on hover /
                 color: white; / Keep white text on hover */
             }
+            
+            /* Download Button Styling ------------------------- */
+            div.stDownloadButton > button {
+                background-color: brown; / Brown background for buttons /
+                color: white; / White text on the button /
+                border: none; / Remove default borders /
+                padding: 0.5em 1em;
+                font-size: 16px;
+                border-radius: 10px; / Rounded corners /
+                cursor: pointer;
+            }
+            div.stDownloadButton  > button:hover {
+                background-color: #8B4513; / Darker brown on hover /
+                color: white; / Keep white text on hover */
+            }
                 
         </style>
     """, unsafe_allow_html=True)
-
-# Function to show 360° view for exoplanets
-def show_360_view(exoplanet_name, iframe_link):
-    st.title(f"{exoplanet_name} - 360° View")
-    st.markdown(f'<iframe src="{iframe_link}" width=700 height=700 style="border:0;" allow="fullscreen"></iframe>', unsafe_allow_html=True)
     
-    col1, col2, col3 = st.columns(3)
-    with col1:
-        if st.button("🔙 Go Back"):
-            st.session_state.page = 'main'
-    with col2:
-        if st.button("📍Landing View"):
-            if exoplanet_name == "Kelt-21 b":
-                st.session_state.page = 'kelt_21_b'  
-            elif exoplanet_name == "K2-18 c":
-                st.session_state.page = 'k2_18_c'
-            elif exoplanet_name == "K2-18 b":
-                st.session_state.page = 'k2_18_b'
-    with col3:
-        if st.button("🔭 Telescope View"):
-            st.session_state.page = 'telescope'
 
-# Choosinh a star
+# Choosing a star page -------------------------------------
 def main_content():
     st.title("Stars")
 
     # Create a bubble container with clickable bubbles
     cols = st.columns(3)
-    starNames = [
-        "K2-18",
-        "Ross 128",
-        "Wolf 1067",
-        "Kapteyn's Star", 
-        "Proxima Centra", 
-        "Tau Centauri", 
-        "GJ 667C", 
-        "Gliese 832", 
-        "YZ Centauri", 
-        "HD 219134"
-    ]
 
-    for i in range(0, 9, 3): # Indexing error so I'm only including 9 (Will fix in the future)
-        with cols[0]:  
-            if st.button(starNames[i]):
-                if starNames[i] == "K2-18":
-                    st.session_state.page = starNames[i]
-                else:
-                    None
-                #st.session_state.page = starNames[i]
-        with cols[1]: 
-            if st.button(starNames[i+1]):
-                None
-        with cols[2]: 
-            if st.button(starNames[i+2]):
-                None
-                #st.session_state.page = starNames[i+2]
+    # Create rows of stars (3 stars per row)
+    cols_per_row = 3
+    for i in range(0, len(starNames), cols_per_row):
+        cols = st.columns(cols_per_row)
 
-    ## Check for specific button action
-    #if st.button("K2-18"):
-    #    st.session_state.page = 'K2-18'
+        for idx, col in enumerate(cols):
+            if i + idx < len(starNames):
+                star_name = starNames[i + idx]
+                with col:
+                    if st.button(star_name):
+                        # Check if the star has exoplanets
+                        if star_name in exoplanets and exoplanets[star_name]:
+                            st.session_state.page = "exoplanet"  # Navigate to the exoplanet page
+                            st.session_state.selected_star = star_name  # Store the selected star
+                        else:
+                            st.write("None")  # Keep user on the main page 
+   
+    st.write("") # blank line 
+    st.write("") # blank line 
     
-
-
-# Main content with buttons for different exoplanets
-def exoplanent_content():
-    st.title("Explore Exoplanets")
-
-    # Create a bubble container with clickable bubbles
-    col1, col2, col3 = st.columns(3)
-
+    # Go back button 
+    col1, _, _ = st.columns(3)
     with col1:
-        if st.button("K2-18 b"):
-            st.session_state.page = 'Kepler-808_b'
+        if st.button("🔙 Go Back"):
+            st.session_state.page = 'main'
 
-    with col2:
-        if st.button("K2-18 c"):
-            st.session_state.page = 'HATS-74_A_b'
+# end of Choosing star page ----------------------------------
+
+
+# Selecting Exoplanet Page -----------------------------------
+def exoplanent_content():
+    # Ensure a star is selected
+    if 'selected_star' in st.session_state and st.session_state.selected_star in starNames:
+        selected_star = st.session_state.selected_star
+        st.title(f"Explore Exoplanets in {selected_star}")
+
+        # Check if the selected star has any exoplanets
+        if selected_star in exoplanets:
+            exoplanet_list = exoplanets[selected_star]
+
+            # Create a bubble container with clickable bubbles
+            cols_per_row = 3
+            for i in range(0, len(exoplanet_list), cols_per_row):
+                cols = st.columns(cols_per_row)
+
+                for idx, col in enumerate(cols):
+                    if i + idx < len(exoplanet_list):
+                        exoplanet_name = exoplanet_list[i + idx]
+                        with col:
+                            if st.button(exoplanet_name):
+                                st.session_state.page = "360_view"
+                                st.session_state.selected_exoplanet = exoplanet_name  # Store the selected exoplanet
+        else:
+            st.write("No exoplanets found for this star.")  # Message if no exoplanets
+
+    # Go Back button to return to star selection
+    st.write("")  # Add spacing
     
+    # Format for back button 
+    col1, _, _ = st.columns(3)
+    
+    # Back button 
+    with col1:
+        if st.button("🔙 Go Back"):
+            st.session_state.page = 'main'
+
+# End of Selecting Exoplanet Page -----------------------------------
+
+
+
+# Showing the Planets Orbit POV Page -------------------------------------
+
+# Function to show 360° view for exoplanets
+def show_360_view():
+    exoplanet_name = st.session_state.selected_exoplanet
+    st.title(f"{exoplanet_name} - 360° View")
+    
+    # Determine the correct orbit URL based on the exoplanet name
+    orbit_link = None
+    if exoplanet_name == "K2-18 b":
+        orbit_link = orbit_urls["kepler_url"]
+    elif exoplanet_name == "K2-18 c":
+        orbit_link = orbit_urls["hats_url"]
+    elif exoplanet_name == "Kelt-21 b":
+        orbit_link = orbit_urls["kelt_url"]
+
+    # Render the 360° view iframe
+    if orbit_link:
+        st.markdown(f'<iframe src="{orbit_link}" width=700 height=700 style="border:0;" allow="fullscreen"></iframe>', unsafe_allow_html=True)
+    else:
+        st.write("360° view is not available for this exoplanet.")
+
+    # Layout for buttons
+    col1, col2, col3 = st.columns(3)
+    
+    # Go Back button
+    with col1:
+        if st.button("🔙 Go Back"):
+            st.session_state.page = 'exoplanet'
+    
+    # Landing View button
+    with col2:
+        landing_url = landing_urls.get(exoplanet_name)
+        if landing_url:
+            if st.button("📍 Landing View"):
+                st.markdown(f'<iframe src="{landing_url}" width=700 height=700 style="border:0;" allow="fullscreen"></iframe>', unsafe_allow_html=True)
+    
+    # Telescope View button
     with col3:
-        if st.button("KELT-21 b"):
-            st.session_state.page = 'KELT-21_b'
+        if st.button("🔭 Telescope View"):
+            st.session_state.page = 'telescope'
+
+            
+# End of Showing the Planets Orbit POV Page -------------------------------------
+
+
+# Telescope page ----------------------------------------------------
 
 # Function to display telescope/star chart view
 def show_telescope_view():
@@ -289,81 +376,100 @@ def show_telescope_view():
                 file_name="final_star_chart.png",
                 mime="image/png"
             )
-            
+    
+    # Go Back button to return to star selection
+    st.write("")  # Add spacing
+
+    # format for go back button 
     col1, col2, col3 = st.columns(3)
+    
+    # go back button 
     with col1:
         if st.button("🔙 Go Back"):
             st.session_state.page = 'main'
+            
+# End of Telescope page ----------------------------------------------------
 
 
-# CSS for Styling
-def set_cssLanding():
-    st.markdown("""
-        <style>
-            body {
-                background-color: black; /*Darker background*/
-            }
-            h1 {
-                text-align: center;
-                color: #fff; /*white text*/
-            }
-        </style>
-    """, unsafe_allow_html=True)
-
+# Landing page ----------------------------------------------------
 
 # Function to display the 360° view for the exoplanet
 def show_360_LandView(exoplanet_name, iframe_link):
     st.title(f"{exoplanet_name} - 360° View")
-    st.markdown(f'<iframe src="{iframe_link}" width=700 height=700 style="border:0;" allow="fullscreen"></iframe>', unsafe_allow_html=True)
-    col1, col2, col3 = st.columns(3)
+
+    # Use a centered container for the iframe
+    st.markdown(f'''
+        <div style="text-align: center;">
+            <iframe src="{iframe_link}" width="700" height="700" style="border:0;" allow="fullscreen"></iframe>
+        </div>
+    ''', unsafe_allow_html=True)
+
+    # Separate row for buttons (not affecting the iframe layout)
+    st.write("")  # Add spacing for visual separation
+
+    # Buttons in a row using columns
+    col1, col2, col3 = st.columns([1, 1, 1])
+
     with col1:
         if st.button("🔙 Go Back"):
             st.session_state.page = 'main'
+
     with col3:
         if st.button("🔭 Telescope View"):
             st.session_state.page = 'telescope'
+    
+# End of Landing page ----------------------------------------------------
+
+
 
 
 # Main App Logic
+# Check for session state 
 if 'page' not in st.session_state:
     st.session_state.page = 'main'
 
+# Navigation logic 
 if st.session_state.page == 'main':
     set_css()
-    main_content()
+    main_content()  # Main page with stars
 
-elif st.session_state.page == 'K2-18':
+elif st.session_state.page == 'exoplanet':
     set_css()
-    exoplanent_content()
+    exoplanent_content()  # Show exoplanet options for the selected star
 
-
-# Show the 360° view for each planet based on user choice
-elif st.session_state.page == 'Kepler-808_b':
+elif st.session_state.page == '360_view':
     set_css()
-    show_360_view('K2-18 b', kepler_url)
+    show_360_view()  # Show the 360° view based on the selected exoplanet
 
-elif st.session_state.page == 'HATS-74_A_b':
-    set_css()
-    show_360_view('K2-18 c', hats_url)
-
-elif st.session_state.page == 'KELT-21_b':
-    set_css()
-    show_360_view('KELT-21 b', kelt_url)
-
-# Show telescope view when the user clicks the "Telescope View" button
 elif st.session_state.page == 'telescope':
     set_css()
-    show_telescope_view()
+    show_telescope_view()  # Show telescope/star chart view
 
 
-elif st.session_state.page == 'k2_18_b':
-    set_css()
-    show_360_LandView("K2-18 b","https://skybox.blockadelabs.com/e/5da2b296403e5e4802d1fe2cebc0262c" )
-elif st.session_state.page == 'k2_18_c':
-    set_css()
-    show_360_LandView("K2-18 c", "https://skybox.blockadelabs.com/e/faf4efe95b76063c14095b5fcc72ec2c")
-elif st.session_state.page == 'kelt_21_b':
-    set_cssLanding()
-    show_360_LandView("KELT-21 b", "https://skybox.blockadelabs.com/e/7ccd18d63ee7d666a128776f4f36f605")
+# Adjusted button action in main_content function
+def main_content():
+    st.title("Stars")
+    # Create a bubble container with clickable bubbles
+    cols = st.columns(3)
 
+    # Create rows of stars (3 stars per row)
+    cols_per_row = 3
+    for i in range(0, len(starNames), cols_per_row):
+        cols = st.columns(cols_per_row)
+
+        for idx, col in enumerate(cols):
+            if i + idx < len(starNames):
+                star_name = starNames[i + idx]
+                with col:
+                    if st.button(star_name):
+                        # Navigate to the exoplanet page when a star is selected
+                        if star_name in exoplanets:
+                            st.session_state.page = "exoplanet"  # Change to exoplanet page
+                            st.session_state.selected_star = star_name  # Store selected star
+
+    # Go back button
+    col1, _, _ = st.columns(3)
+    with col1:
+        if st.button("🔙 Go Back"):
+            st.session_state.page = 'main'
 
