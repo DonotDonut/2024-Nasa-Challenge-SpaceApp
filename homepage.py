@@ -4,8 +4,9 @@ import subprocess
 # Set up the page configuration
 st.set_page_config(page_title="Flask Website", layout="wide") #THIS LINE MUST BE THE FIRST NO MATTER WHAT!!!    
 
-st.page_link("homepage.py", label="Home", icon="🏠")
-st.page_link("pages/Exoplanet_3D.py", label="Exoplanet_3D", icon="1️⃣")
+# Navigation in Streamlit 
+#st.page_link("homepage.py", label="Home", icon="🏠")
+#st.page_link("pages/Exoplanet_3D.py", label="Exoplanet_3D", icon="1️⃣")
 
 # Initialize the session state if it doesn't exist
 if 'current_page' not in st.session_state:
@@ -45,15 +46,6 @@ st.markdown(
             height: 100%;
             text-align: left;
             margin: auto;
-        }
-
-        /* Play Button */
-        #play_Button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            display: inline-block;
         }
 
         /*
@@ -131,6 +123,31 @@ st.markdown(
         .memberName {
             font-weight: bold;
             padding-right: 20px;
+        }
+        
+        
+        .link-button {
+            display: inline-block;
+            padding: 10px 15px;
+            margin: 10px;
+            font-size: 16px;
+            color: white;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+
+        .link-button:hover {
+            background-color: #45a049;
+            color: white;
+        }
+
+        .link-button-icon {
+            margin-right: 5px;
         }
         
     </style>
@@ -211,15 +228,13 @@ with tab2:
     # Function to run another Streamlit app
     def run_other_app():
         # Define the path to your other Streamlit app
-        exoplanet_app_path = "Exo-Explorer\Exoplanet_3D.py"
+        exoplanet_app_path = "pages\Exoplanet_3D.py"
 
         # Run the other app as a subprocess
         subprocess.Popen(["streamlit", "run", exoplanet_app_path])
     
         # Buttons for navigation in the main content area
-    if st.button("Play Now!"):
-        #st.session_state.current_page = 'exoplanet_3D'  # Set current page to exoplanet_3D
-    
+    if st.link_button("Play Now!", ):
         run_other_app()
         st.success("Exoplanet 3D App is now running!")
         
