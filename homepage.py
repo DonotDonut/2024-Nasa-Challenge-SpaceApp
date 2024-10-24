@@ -5,8 +5,8 @@ import subprocess
 st.set_page_config(page_title="Flask Website", layout="wide") #THIS LINE MUST BE THE FIRST NO MATTER WHAT!!!    
 
 # Navigation in Streamlit 
-#st.page_link("homepage.py", label="Home", icon="🏠")
-#st.page_link("pages/Exoplanet_3D.py", label="Exoplanet_3D", icon="1️⃣")
+st.page_link("homepage.py", label="Home", icon="🏠")
+st.page_link("pages/Exoplanet_3D.py", label="Exoplanet_3D", icon="1️⃣")
 
 # Initialize the session state if it doesn't exist
 if 'current_page' not in st.session_state:
@@ -126,30 +126,6 @@ st.markdown(
         }
         
         
-        .link-button {
-            display: inline-block;
-            padding: 10px 15px;
-            margin: 10px;
-            font-size: 16px;
-            color: white;
-            background-color: #4CAF50;
-            border: none;
-            border-radius: 5px;
-            text-align: center;
-            text-decoration: none;
-            transition-duration: 0.4s;
-            cursor: pointer;
-        }
-
-        .link-button:hover {
-            background-color: #45a049;
-            color: white;
-        }
-
-        .link-button-icon {
-            margin-right: 5px;
-        }
-        
     </style>
     """,
     unsafe_allow_html=True
@@ -234,7 +210,7 @@ with tab2:
         subprocess.Popen(["streamlit", "run", exoplanet_app_path])
     
         # Buttons for navigation in the main content area
-    if st.link_button("Play Now!", ):
+    if st.button("Play Now!", ):
         run_other_app()
         st.success("Exoplanet 3D App is now running!")
         

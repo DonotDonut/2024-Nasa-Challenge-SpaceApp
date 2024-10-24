@@ -10,8 +10,6 @@ from streamlit_drawable_canvas import st_canvas
 import io
 from PIL import Image, ImageOps
 
-st.page_link("homepage.py", label="Home", icon="🏠")
-st.page_link("pages/Exoplanet_3D.py", label="Exoplanet_3D", icon="1️⃣")
 
 # Dictionary to hold star data
 star_data = {
