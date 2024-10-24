@@ -1,11 +1,11 @@
 import streamlit as st
 import subprocess
 
+# Set up the page configuration
+st.set_page_config(page_title="Flask Website", layout="wide") #THIS LINE MUST BE THE FIRST NO MATTER WHAT!!!    
+
 st.page_link("homepage.py", label="Home", icon="🏠")
 st.page_link("pages/Exoplanet_3D.py", label="Exoplanet_3D", icon="1️⃣")
-
-# Set up the page configuration
-st.set_page_config(page_title="Flask Website", layout="wide")
 
 # Initialize the session state if it doesn't exist
 if 'current_page' not in st.session_state:
