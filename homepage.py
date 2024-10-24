@@ -1,6 +1,8 @@
 import streamlit as st
 import subprocess
 
+st.page_link("homepage.py", label="Home", icon="🏠")
+st.page_link("pages/Exoplanet_3D.py", label="Exoplanet_3D", icon="1️⃣")
 
 # Set up the page configuration
 st.set_page_config(page_title="Flask Website", layout="wide")
